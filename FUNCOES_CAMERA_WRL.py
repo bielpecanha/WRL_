@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import pyrealsense2 as rs
-import time
 import math
 import os
 import pandas as pd
@@ -103,7 +102,6 @@ def exibir_imagens(foto_app, img_segmentada, img_identificada):
     cv2.destroyAllWindows()
 
 def tirar_foto(color_frame, infra_image, id_bico):
-    tempo_inicial = time.time()
     data = datetime.now()
     lista_arq = []
     # Formatar a data e hora como parte do nome do arquivo
@@ -142,10 +140,6 @@ def tirar_foto(color_frame, infra_image, id_bico):
 
     messagebox.showinfo("INFO","Imagem salva") #pensar em outra forma de alertar o usurário que a foto foi salva sem travar o andamento da aplicação
     
-    tempo_fim = time.time()
-    tempo_decorrido = tempo_fim - tempo_inicial
-    print(f"Tempo de execução: {tempo_decorrido:.4f} segundos")
-
     return lista_arq, caminho_completo_fotografia_BW, caminho_completo_fotografia_colorida, nome_arquivo_colorido
 
 def analisar_imagem(model, imagem, nome, depth_frame, Abertura):

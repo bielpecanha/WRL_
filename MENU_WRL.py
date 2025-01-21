@@ -55,7 +55,7 @@ def INICIAR_INSPECAO(inp_menu):
 
     splash.grab_set()  # Bloqueia interação com outras janelas
 
-    splash.protocol("WM_DELETE_WINDOW", mostrar_menu)
+    splash.protocol("WM_DELETE_WINDOW")
 
 def ABA_CADASTRO_USINA(inp_menu):
     from CADASTRO_USINA_WRL import aba_cadastro_usina

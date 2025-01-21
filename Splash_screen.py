@@ -58,3 +58,10 @@ class Splash(tk.Toplevel):
 
     def destroy_window(self):
         self.destroy
+
+    '''tempo_inicial = time.time()
+    tempo_decorrido = tempo_fim - tempo_inicial
+    print(f"Tempo de execução: {tempo_decorrido:.4f} segundos")
+    tempo_fim = time.time()
+    tempo_decorrido = tempo_fim - tempo_inicial
+    print(f"Tempo de execução: {tempo_decorrido:.4f} segundos")'''
