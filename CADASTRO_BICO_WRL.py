@@ -39,7 +39,7 @@ def SITE():
     return dados_filtrados
 
 def tabela(): # {=========Informações da tabela(FRAME 2)=========}
-    conn, cursor = FUNCOES_BD.CONECTA_BD(caminho)
+    conn, cursor = FUNCOES_BD.CONECTA_BD('C:/Users/20221CECA0402/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db')
     comando = f"SELECT * FROM DADOS_EMPRESAS "
     cursor.execute(comando)
     dados_tabela =cursor.fetchall()
@@ -131,9 +131,9 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     Var_Usina = tk.StringVar(inp_frame)
 
-    input_Usina = tk.OptionMenu(inp_frame, Var_Usina, *USINAS()) 
+    '''input_Usina = tk.OptionMenu(inp_frame, Var_Usina, *USINAS()) 
     input_Usina.config(font=("Arial", 18))
-    input_Usina.place(relx=0.2, rely=0.2, relwidth=0.75, relheight=0.07)
+    input_Usina.place(relx=0.2, rely=0.2, relwidth=0.75, relheight=0.07)'''
 
     # {=======================SITE=========================}
     label_site = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Site: ", fundo_branco, marrom, 'arial', '20', 'bold')
@@ -151,9 +151,9 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     Var_Usina.trace("w", update_sites)
 
-    input_site = tk.OptionMenu(inp_frame, Var_site, "") 
+    '''input_site = tk.OptionMenu(inp_frame, Var_site, "") 
     input_site.config(font=("Arial", 18))
-    input_site.place(relx=0.15, rely=0.35, relwidth=0.8, relheight=0.07)
+    input_site.place(relx=0.15, rely=0.35, relwidth=0.8, relheight=0.07)'''
 
     # {=======================FUROS=========================}
     label_furos = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Furos: ", fundo_branco, marrom, 'arial', '20', 'bold' )
