@@ -9,8 +9,8 @@ from direction import pasta_bd
 caminho = pasta_bd()
 
 def USINAS():
-    conn, cursor = FUNCOES_BD.CONECTA_BD(caminho)
-    comando = f"SELECT Grupo FROM DADOS_EMPRESAS "
+    conn, cursor = FUNCOES_BD.CONECTA_BD('C:/Users/20221CECA0402/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db')
+    comando = f"SELECT Grupo FROM DADOS_EMPRESAS"
     cursor.execute(comando)
     dados_banco = cursor.fetchall()
     FUNCOES_BD.DESCONECTA_BD(conn)
@@ -30,7 +30,7 @@ def USINA_SITE(inp_usina):
 
 def SITE():
     conn, cursor = FUNCOES_BD.CONECTA_BD(caminho)
-    comando = f"SELECT Site FROM DADOS_EMPRESAS "
+    comando = f"SELECT Site FROM DADOS_EMPRESAS"
     cursor.execute(comando)
     dados_banco = cursor.fetchall()
     FUNCOES_BD.DESCONECTA_BD(conn)
@@ -151,9 +151,9 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     Var_Usina.trace("w", update_sites)
 
-    '''input_site = tk.OptionMenu(inp_frame, Var_site, "") 
+    input_site = tk.OptionMenu(inp_frame, Var_site, "") 
     input_site.config(font=("Arial", 18))
-    input_site.place(relx=0.15, rely=0.35, relwidth=0.8, relheight=0.07)'''
+    input_site.place(relx=0.15, rely=0.35, relwidth=0.8, relheight=0.07)
 
     # {=======================FUROS=========================}
     label_furos = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Furos: ", fundo_branco, marrom, 'arial', '20', 'bold' )
