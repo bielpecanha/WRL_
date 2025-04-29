@@ -7,7 +7,7 @@ def folder():
 
 def pasta_bd():
     # Define o caminho para o banco de dados relativo ao diretório base
-    return os.path.join(folder(), "dados_bd")
+    return os.path.join(folder(), "dados_bd\REGISTROS_WRL.db")
 
 def pasta_site():
     # Define o caminho para a pasta SITE relativo ao diretório base

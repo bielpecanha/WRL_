@@ -39,7 +39,7 @@ def SITE():
     return dados_filtrados
 
 def tabela(): # {=========Informações da tabela(FRAME 2)=========}
-    conn, cursor = FUNCOES_BD.CONECTA_BD('C:/Users/20221CECA0402/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db')
+    conn, cursor = FUNCOES_BD.CONECTA_BD('C:/Users/GAIn109/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db')
     comando = f"SELECT * FROM DADOS_EMPRESAS "
     cursor.execute(comando)
     dados_tabela =cursor.fetchall()
@@ -131,9 +131,9 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     Var_Usina = tk.StringVar(inp_frame)
 
-    '''input_Usina = tk.OptionMenu(inp_frame, Var_Usina, *USINAS()) 
+    input_Usina = tk.OptionMenu(inp_frame, Var_Usina, *USINAS()) 
     input_Usina.config(font=("Arial", 18))
-    input_Usina.place(relx=0.2, rely=0.2, relwidth=0.75, relheight=0.07)'''
+    input_Usina.place(relx=0.2, rely=0.2, relwidth=0.75, relheight=0.07)
 
     # {=======================SITE=========================}
     label_site = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Site: ", fundo_branco, marrom, 'arial', '20', 'bold')
@@ -236,8 +236,8 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
         
         conn, cursor = FUNCOES_BD.CONECTA_BD(caminho)
         conn.commit()
-        comando = f"INSERT INTO DADOS_EMPRESAS VALUES (?, ?, ?, ?, ?, ?, ?)"
-        registros = (dados_obtidos[0], dados_obtidos[1], dados_obtidos[2], dados_obtidos[3], dados_obtidos[4],  dados_obtidos[5], dados_obtidos[6])
+        comando = f"INSERT INTO DADOS_EMPRESAS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        registros = (dados_obtidos[0], dados_obtidos[1], dados_obtidos[2], dados_obtidos[3], dados_obtidos[4],  dados_obtidos[5], dados_obtidos[6], dados_obtidos[7],dados_obtidos[8])
         cursor.execute(comando, registros)
         conn.commit()
         print("\n\n", color.Fore.CYAN + "DADOS SALVOS - CADASTRO_BICO_WRL" + color.Style.RESET_ALL)
@@ -292,7 +292,7 @@ def componentes_frame2(inp_frame):
     titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Bicos Registrados", fundo_branco, verde_escuro, 'arial', '25', 'bold')
     titulo.place(relx =0.3, rely=0.05) 
     
-    Tabela = ttk.Treeview(inp_frame, height=10,column=("col1", "col2", "col3", "col4", "col5","col6","col7" ),style="mystyle.Treeview")
+    Tabela = ttk.Treeview(inp_frame, height=10,column=("col1", "col2", "col3", "col4", "col5","col6","col7", "col8", "col9"),style="mystyle.Treeview")
 
     style = ttk.Style()
     style.configure("Treeview.Heading", font=('Verdana', 12,'bold'))
@@ -301,13 +301,15 @@ def componentes_frame2(inp_frame):
     Tabela.column("#0", width=0, stretch=tk.NO)# Ocultando a primeira coluna
     Tabela.heading("#0", text="")
 
-    Tabela.heading("#1", text="Furos")
-    Tabela.heading("#2", text="Grupo")
-    Tabela.heading("#3", text="Site")
-    Tabela.heading("#4", text="BOF")
-    Tabela.heading("#5", text="TIPO")
-    Tabela.heading("#6", text="ID")
-    Tabela.heading("#7", text="Ult. Vida")
+    Tabela.heading("#1", text="ID")
+    Tabela.heading("#2", text="Usina")
+    Tabela.heading("#3", text="País")
+    Tabela.heading("#4", text="Estado")
+    Tabela.heading("#5", text="Site")
+    Tabela.heading("#6", text="Furos")
+    Tabela.heading("#7", text="Tipo")
+    Tabela.heading("#8", text="BOF")
+    Tabela.heading("#9", text="Ult. Vida")
     
     Tabela.column("#1", width=15, anchor='center')
     Tabela.column("#2", width=150)

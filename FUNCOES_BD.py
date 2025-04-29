@@ -6,14 +6,16 @@ cursor = conexao.cursor()
 
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS DADOS_EMPRESAS(
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ID TEXT NOT NULL,
     Usina TEXT NOT NULL,
     Site TEXT NOT NULL,
+    País TEXT NOT NULL,
     Estado TEXT NOT NULL,
     Grupo TEXT NOT NULL,
     Furos TEXT NOT NULL,
     BOF TEXT NOT NULL,
-    Tipo TEXT NOT NULL
+    Tipo TEXT NOT NULL,
+    Ult vida TEXT NOT NULL
     )
 '''
 )
