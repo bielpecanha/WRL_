@@ -4,7 +4,9 @@ import tkinter as tk
 import colorama as color
 import FUNCOES_BD
 import FUNCOES_TKINTER
-from direction import pasta_bd
+from direction import pasta_bd, folder
+
+pasta = folder()
 
 def ENTRY_INT(inp_text): #Limite do número inteiro do "validador"
     if inp_text == "": return True
@@ -89,25 +91,26 @@ def frames_da_tela(inp_janela):
     frame_1.place(relx=0.01, rely=0.02,relwidth=0.98, relheight=0.96)
 
 def componentes_frame1(inp_frame,inp_janela, inp_menu):
+    # {=======================Tela de Cadastro Usina=========================}
     # {=======================Títulos=========================}
     titulo_1 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Usina", fundo_branco, verde_escuro, 'arial', '25', 'bold')
-    titulo_1.place(relx=0.15, rely=0.05) 
+    titulo_1.place(relx=0.45, rely=0.10) 
     
-    titulo_2 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Primeiro Registro\nda nova Usina", fundo_branco, verde_escuro, 'arial', '25', 'bold')
-    titulo_2.place(relx =0.65, rely=0.05)
+    #titulo_2 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Primeiro Registro\nda nova Usina", fundo_branco, verde_escuro, 'arial', '25', 'bold')
+    #titulo_2.place(relx =0.65, rely=0.05)
 
     # {=======================USINA - PAÍS=========================}
     label_usina_pais = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "País: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina_pais.place(relx=0.03, rely=0.3)
+    label_usina_pais.place(relx=0.31, rely=0.3)
 
     input_usina_pais = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand="key")
-    input_usina_pais.place(relx=0.12, rely=0.3, relwidth=0.34, relheight=0.07)
+    input_usina_pais.place(relx=0.35, rely=0.3, relwidth=0.35, relheight=0.07)
     vcmd2 = (input_usina_pais.register(ENTRY_STRING), '%P')
     input_usina_pais.config(validatecommand = vcmd2)
 
     # {=======================USINA - ESTADO=========================}
     label_usina_estado = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Estado: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina_estado.place(relx=0.03, rely=0.45)
+    label_usina_estado.place(relx=0.29, rely=0.45)
 
     estados_brasileiros = [ "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", 
                             "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" ]
@@ -115,24 +118,24 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     estado_var = StringVar()
     estado_combobox = ttk.Combobox(inp_frame, textvariable = estado_var, font=("Arial", 18), state="readonly")
     estado_combobox['values'] = estados_brasileiros
-    estado_combobox.place(relx=0.12, rely=0.45, relwidth=0.35, relheight=0.07)
+    estado_combobox.place(relx=0.35, rely=0.45, relwidth=0.35, relheight=0.07)
     
     # {=======================USINA - NOME=========================}
     label_usina_nome = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Usina: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina_nome.place(relx=0.03, rely=0.6)
+    label_usina_nome.place(relx=0.30, rely=0.6)
 
     input_usina_nome = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand="key")
-    input_usina_nome.place(relx=0.11, rely=0.6, relwidth=0.35, relheight=0.07)
+    input_usina_nome.place(relx=0.35, rely=0.6, relwidth=0.35, relheight=0.07)
     
     # {=======================SITE=========================}
     label_site = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Site: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_site.place(relx=0.03, rely=0.75)
+    label_site.place(relx=0.31, rely=0.75)
 
     input_site = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand="key")
-    input_site.place(relx=0.11, rely=0.75, relwidth=0.35, relheight=0.07)
+    input_site.place(relx=0.35, rely=0.75, relwidth=0.35, relheight=0.07)
 
     # {=======================Divisória=========================}
-    label_divisor = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "", bege, marrom, 'arial', '20', 'bold')
+    '''label_divisor = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "", bege, marrom, 'arial', '20', 'bold')
     label_divisor.place(relx=0.5, rely=0.1, relwidth=0.005, relheight=0.85)
     
     # {=======================FUROS=========================}
@@ -162,7 +165,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     label_ID.place(relx=0.53, rely=0.75)
 
     input_ID = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand= validador(inp_frame))
-    input_ID.place(relx=0.63, rely=0.75, relwidth=0.26, relheight=0.07)
+    input_ID.place(relx=0.63, rely=0.75, relwidth=0.26, relheight=0.07)'''
     
     # {=======================Botão Voltar, Continuar e excluir=========================}
     bt_voltar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "VOLTAR",verde, bege,3,'15','bold',"hand2",lambda: FUNCOES_TKINTER.BOTAO_VOLTAR( inp_menu, inp_janela))
@@ -171,8 +174,8 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     # bt_continuar = fun1.CRIAR_BOTAO(inp_frame, "DELETAR", verde, bege,3,'15','bold',"hand2")#,lambda: deletar(inp_menu, inp_janela)
     # bt_continuar.place(relx=0.4, rely=0.89, relwidth=0.2, relheight=0.08)
 
-    bt_continuar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "SALVAR",verde, bege,3,'15','bold',"hand2", lambda: salvar(inp_menu, inp_janela))#,
-    bt_continuar.place(relx=0.75, rely=0.89, relwidth=0.2, relheight=0.08)
+    #bt_continuar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "SALVAR",verde, bege,3,'15','bold',"hand2", lambda: salvar(inp_menu, inp_janela))#,
+    #bt_continuar.place(relx=0.75, rely=0.89, relwidth=0.2, relheight=0.08)
 
     # {======================= Mostrando avisos =========================}
     def salvar(aba_1, aba_2):

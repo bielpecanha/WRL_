@@ -5,12 +5,14 @@ import colorama as color
 import FUNCOES_BD
 import FUNCOES_TKINTER
 from direction import pasta_bd
+from direction import folder
 
 caminho = pasta_bd()
+pasta = folder()
 
 def USINAS():
-    conn, cursor = FUNCOES_BD.CONECTA_BD('C:/Users/20221CECA0402/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db')
-    comando = f"SELECT Grupo FROM DADOS_EMPRESAS"
+    conn, cursor = FUNCOES_BD.CONECTA_BD(caminho)
+    comando = f"SELECT Grupo FROM DADOS_EMPRESAS "
     cursor.execute(comando)
     dados_banco = cursor.fetchall()
     FUNCOES_BD.DESCONECTA_BD(conn)
@@ -30,7 +32,7 @@ def USINA_SITE(inp_usina):
 
 def SITE():
     conn, cursor = FUNCOES_BD.CONECTA_BD(caminho)
-    comando = f"SELECT Site FROM DADOS_EMPRESAS"
+    comando = f"SELECT Site FROM DADOS_EMPRESAS "
     cursor.execute(comando)
     dados_banco = cursor.fetchall()
     FUNCOES_BD.DESCONECTA_BD(conn)
@@ -39,7 +41,7 @@ def SITE():
     return dados_filtrados
 
 def tabela(): # {=========Informações da tabela(FRAME 2)=========}
-    conn, cursor = FUNCOES_BD.CONECTA_BD('C:/Users/GAIn109/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db')
+    conn, cursor = FUNCOES_BD.CONECTA_BD('C:/Users/20221CECA0402/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db')
     comando = f"SELECT * FROM DADOS_EMPRESAS "
     cursor.execute(comando)
     dados_tabela =cursor.fetchall()
@@ -121,6 +123,18 @@ def frames_da_tela(inp_janela):
     
 def componentes_frame1(inp_frame,inp_janela, inp_menu):
     #OBS: por filtros pro ID, tipo e BOF( para não confundir os locais),mas para isso preciso de parametrosoferecidos pelo cliente
+    
+    # {=======================Imagem IFES=========================}
+    img1_pg1 = tk.PhotoImage(file=os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
+    
+    img1_pg1 = img1_pg1.subsample(4,4)
+
+    fotoimg1_pg1 = tk.Label(frame_1,
+                            bg= 'white',
+                            bd =0,
+                            image = img1_pg1)
+    fotoimg1_pg1.place(relx=0.15, rely=0.19, anchor=CENTER)
+    
     # {=======================Título=========================}
     titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '25', 'bold')
     titulo.place(relx=0.3, rely=0.05) 
