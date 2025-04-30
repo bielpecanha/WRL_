@@ -4,6 +4,7 @@ import tkinter as tk
 import colorama as color
 import FUNCOES_BD
 import FUNCOES_TKINTER
+import PIL
 from direction import pasta_bd
 from direction import folder
 
@@ -127,13 +128,13 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     # {=======================Imagem IFES=========================}
     img1_pg1 = tk.PhotoImage(file=os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
     
-    img1_pg1 = img1_pg1.subsample(4,4)
+    img1_pg1 = img1_pg1.subsample(5,5)
 
     fotoimg1_pg1 = tk.Label(frame_1,
                             bg= 'white',
                             bd =0,
                             image = img1_pg1)
-    fotoimg1_pg1.place(relx=0.15, rely=0.19, anchor=CENTER)
+    fotoimg1_pg1.place(relx=0.12, rely=0.09, anchor=CENTER)
     
     # {=======================Título=========================}
     titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '25', 'bold')
