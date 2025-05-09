@@ -125,20 +125,22 @@ def frames_da_tela(inp_janela):
 def componentes_frame1(inp_frame,inp_janela, inp_menu):
     #OBS: por filtros pro ID, tipo e BOF( para não confundir os locais),mas para isso preciso de parametrosoferecidos pelo cliente
     
-    # {=======================Imagem IFES=========================}
-    img1_pg1 = tk.PhotoImage(file=os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
-    
-    img1_pg1 = img1_pg1.subsample(5,5)
-
-    fotoimg1_pg1 = tk.Label(frame_1,
-                            bg= 'white',
-                            bd =0,
-                            image = img1_pg1)
-    fotoimg1_pg1.place(relx=0.12, rely=0.09, anchor=CENTER)
-    
     # {=======================Título=========================}
     titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '25', 'bold')
     titulo.place(relx=0.3, rely=0.05) 
+
+    # {=======================Imagem IFES=========================}
+    img = tk.PhotoImage(file = os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
+    img = img.subsample(6,6)
+    
+    fotoimg = tk.Label(frame_1,
+                       bg = 'white',
+                       bd = 0,
+                       image = img)
+    
+    fotoimg.image = img
+
+    fotoimg.place(relx = 0.12, rely = 0.10, anchor = CENTER)
 
     # {=======================USINA=========================}
     label_usina = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Usina: ", fundo_branco, marrom, 'arial', '20', 'bold')

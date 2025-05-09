@@ -95,16 +95,15 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     
     # {=======================Imagem IFES=========================}
     img = tk.PhotoImage(file = os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
-    img = img.subsample(4,4)
-
+    img = img.subsample(6,6)
+    
     fotoimg = tk.Label(frame_1,
-                       bg = 'green',
+                       bg = 'white',
                        bd = 0,
                        image = img)
     
     fotoimg.image = img
-    
-    fotoimg.place(relx = 0.15, rely = 0.19, anchor = CENTER)
+    fotoimg.place(relx = 0.05, rely = 0.10, anchor = CENTER)
     
     # {=======================Títulos=========================}
     titulo_1 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Usina", fundo_branco, verde_escuro, 'arial', '25', 'bold')
