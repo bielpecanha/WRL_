@@ -144,17 +144,17 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     # {=======================USINA=========================}
     label_usina = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Usina: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina.place(relx=0.03, rely=0.2)
+    label_usina.place(relx=0.03, rely=0.25)
 
     Var_Usina = tk.StringVar(inp_frame)
 
     input_Usina = tk.OptionMenu(inp_frame, Var_Usina, *USINAS()) 
     input_Usina.config(font=("Arial", 18))
-    input_Usina.place(relx=0.2, rely=0.2, relwidth=0.75, relheight=0.07)
+    input_Usina.place(relx=0.2, rely=0.25, relwidth=0.75, relheight=0.07)
 
     # {=======================SITE=========================}
     label_site = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Site: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_site.place(relx=0.03, rely=0.35)
+    label_site.place(relx=0.03, rely=0.40)
 
     Var_site = tk.StringVar(inp_frame)
 
@@ -170,36 +170,36 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     input_site = tk.OptionMenu(inp_frame, Var_site, "") 
     input_site.config(font=("Arial", 18))
-    input_site.place(relx=0.15, rely=0.35, relwidth=0.8, relheight=0.07)
+    input_site.place(relx=0.15, rely=0.40, relwidth=0.8, relheight=0.07)
 
     # {=======================FUROS=========================}
     label_furos = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Furos: ", fundo_branco, marrom, 'arial', '20', 'bold' )
-    label_furos.place(relx=0.03, rely=0.5)
+    label_furos.place(relx=0.03, rely=0.55)
 
     input_furos = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
-    input_furos.place(relx=0.2, rely=0.5, relwidth=0.26, relheight=0.07)
+    input_furos.place(relx=0.2, rely=0.55, relwidth=0.26, relheight=0.07)
     
     # {=======================TIPO=========================}
     label_tipo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Tipo: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_tipo.place(relx=0.49, rely=0.5)
+    label_tipo.place(relx=0.49, rely=0.55)
 
     input_tipo = tk.Entry(inp_frame,font=("Arial", 18))
-    input_tipo.place(relx=0.64, rely=0.5, relwidth=0.26, relheight=0.07)
+    input_tipo.place(relx=0.64, rely=0.55, relwidth=0.26, relheight=0.07)
     add_placeholder(input_tipo, "externa/interna")
     
     # {=======================BOF=========================}
     label_BOF = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "BOF: ", fundo_branco, marrom, 'arial', '20', 'bold' )
-    label_BOF.place(relx=0.03, rely=0.65)
+    label_BOF.place(relx=0.03, rely=0.70)
 
     input_BOF = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
-    input_BOF.place(relx=0.2, rely=0.65, relwidth=0.26, relheight=0.07)
+    input_BOF.place(relx=0.2, rely=0.70, relwidth=0.26, relheight=0.07)
     
     # {=======================ID=========================}
     label_ID = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "ID: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_ID.place(relx=0.49, rely=0.65)
+    label_ID.place(relx=0.49, rely=0.70)
 
     input_ID = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
-    input_ID.place(relx=0.64, rely=0.65, relwidth=0.26, relheight=0.07)
+    input_ID.place(relx=0.64, rely=0.70, relwidth=0.26, relheight=0.07)
     
     # {=======================Botão Voltar, Continuar e excluir=========================}
     bt_voltar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "VOLTAR",verde, bege,3,'18','bold',"hand2",lambda: FUNCOES_TKINTER.BOTAO_VOLTAR( inp_menu, inp_janela))

@@ -114,7 +114,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     # {=======================USINA - PAÍS=========================}
     label_usina_pais = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "País: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina_pais.place(relx=0.31, rely=0.3)
+    label_usina_pais.place(relx=0.29, rely=0.3)
 
     input_usina_pais = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand="key")
     input_usina_pais.place(relx=0.35, rely=0.3, relwidth=0.35, relheight=0.07)
@@ -123,7 +123,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     # {=======================USINA - ESTADO=========================}
     label_usina_estado = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Estado: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina_estado.place(relx=0.29, rely=0.45)
+    label_usina_estado.place(relx=0.27, rely=0.45)
 
     estados_brasileiros = [ "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", 
                             "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" ]
@@ -135,14 +135,14 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     
     # {=======================USINA - NOME=========================}
     label_usina_nome = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Usina: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina_nome.place(relx=0.30, rely=0.6)
+    label_usina_nome.place(relx=0.28, rely=0.6)
 
     input_usina_nome = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand="key")
     input_usina_nome.place(relx=0.35, rely=0.6, relwidth=0.35, relheight=0.07)
     
     # {=======================SITE=========================}
     label_site = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Site: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_site.place(relx=0.31, rely=0.75)
+    label_site.place(relx=0.29, rely=0.75)
 
     input_site = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand="key")
     input_site.place(relx=0.35, rely=0.75, relwidth=0.35, relheight=0.07)
