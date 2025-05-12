@@ -48,6 +48,8 @@ def tabela(): # {=========Informações da tabela(FRAME 2)=========}
     dados_tabela =cursor.fetchall()
     FUNCOES_BD.DESCONECTA_BD(conn)
 
+    #C:/Users/20221CECA0402/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db
+
     return dados_tabela
 
 def ENTRY_INT(inp_text): #Limite do número inteiro do "validador"
@@ -170,7 +172,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     input_site = tk.OptionMenu(inp_frame, Var_site, "") 
     input_site.config(font=("Arial", 18))
-    input_site.place(relx=0.15, rely=0.40, relwidth=0.8, relheight=0.07)
+    input_site.place(relx=0.20, rely=0.40, relwidth=0.75, relheight=0.07)
 
     # {=======================FUROS=========================}
     label_furos = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Furos: ", fundo_branco, marrom, 'arial', '20', 'bold' )
