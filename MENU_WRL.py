@@ -41,9 +41,9 @@ def ABA_CADASTRO_BICO(inp_menu):
     janela_cadastrar_bico.deiconify()
 
 def INICIAR_INSPECAO(inp_menu):
-    """
-    Inicia o processo de inspeção com uma tela de splash.
-    """
+
+    #Inicia o processo de inspeção com uma tela de splash.
+    
     def carregar_inspecao():
         from INSPECAO_1_WRL import aba_cadastro
         import FUNCOES_CAMERA_WRL as fun2  # Funções para câmera
@@ -104,7 +104,8 @@ def componentes_frame1(inp_menu):
                             bg= 'white',
                             bd =0,
                             image = img1_pg1)
-    fotoimg1_pg1.place(relx=0.15, rely=0.19, anchor=CENTER)
+    
+    fotoimg1_pg1.place(relx=0.15, rely=0.22, anchor=CENTER)
 
     # {=======================Botões de Cadastro=========================}
     bt_cadastro_lanca = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'Cadastrar Bico',verde, bege,3,'38','bold',"hand2",lambda:ABA_CADASTRO_BICO(inp_menu))

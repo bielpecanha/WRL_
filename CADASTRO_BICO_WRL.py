@@ -42,12 +42,13 @@ def SITE():
     return dados_filtrados
 
 def tabela(): # {=========Informações da tabela(FRAME 2)=========}
-    conn, cursor = FUNCOES_BD.CONECTA_BD('C:/Users/20221CECA0402/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db')
+    conn, cursor = FUNCOES_BD.CONECTA_BD(caminho)
     comando = f"SELECT * FROM DADOS_EMPRESAS "
     cursor.execute(comando)
     dados_tabela =cursor.fetchall()
     FUNCOES_BD.DESCONECTA_BD(conn)
 
+#C:/Users/gabri/OneDrive/Documentos/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db
     #C:/Users/20221CECA0402/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db
 
     return dados_tabela
@@ -129,9 +130,9 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     
     # {=======================Título=========================}
     titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '25', 'bold')
-    titulo.place(relx=0.3, rely=0.05) 
+    titulo.place(relx=0.35, rely=0.05) 
 
-    # {=======================Imagem IFES=========================}
+    # {=======================Logo IFES=========================}
     img = tk.PhotoImage(file = os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
     img = img.subsample(6,6)
     
@@ -191,14 +192,14 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     
     # {=======================BOF=========================}
     label_BOF = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "BOF: ", fundo_branco, marrom, 'arial', '20', 'bold' )
-    label_BOF.place(relx=0.03, rely=0.70)
+    label_BOF.place(relx=0.06, rely=0.70)
 
     input_BOF = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
     input_BOF.place(relx=0.2, rely=0.70, relwidth=0.26, relheight=0.07)
     
     # {=======================ID=========================}
     label_ID = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "ID: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_ID.place(relx=0.49, rely=0.70)
+    label_ID.place(relx=0.55, rely=0.70)
 
     input_ID = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
     input_ID.place(relx=0.64, rely=0.70, relwidth=0.26, relheight=0.07)

@@ -93,7 +93,7 @@ def frames_da_tela(inp_janela):
 def componentes_frame1(inp_frame,inp_janela, inp_menu):
     # {=======================Tela de Cadastro Usina=========================}
     
-    # {=======================Imagem IFES=========================}
+    # {=======================Logo IFES=========================}
     img = tk.PhotoImage(file = os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
     img = img.subsample(6,6)
     
@@ -107,7 +107,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     
     # {=======================Títulos=========================}
     titulo_1 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Usina", fundo_branco, verde_escuro, 'arial', '25', 'bold')
-    titulo_1.place(relx=0.45, rely=0.10) 
+    titulo_1.place(relx=0.41, rely=0.10) 
     
     #titulo_2 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Primeiro Registro\nda nova Usina", fundo_branco, verde_escuro, 'arial', '25', 'bold')
     #titulo_2.place(relx =0.65, rely=0.05)
@@ -147,38 +147,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     input_site = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand="key")
     input_site.place(relx=0.35, rely=0.75, relwidth=0.35, relheight=0.07)
 
-    # {=======================Divisória=========================}
-    '''label_divisor = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "", bege, marrom, 'arial', '20', 'bold')
-    label_divisor.place(relx=0.5, rely=0.1, relwidth=0.005, relheight=0.85)
-    
-    # {=======================FUROS=========================}
-    label_furos = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Furos: ", fundo_branco, marrom, 'arial', '20', 'bold' )
-    label_furos.place(relx=0.53, rely=0.3)
 
-    input_furos = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand= validador(inp_frame))
-    input_furos.place(relx=0.63, rely=0.3, relwidth=0.26, relheight=0.07)
-    
-    # {=======================TIPO=========================}
-    label_tipo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Tipo: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_tipo.place(relx=0.53, rely=0.45)
-
-    input_tipo = tk.Entry(inp_frame,font=("Arial", 18))
-    input_tipo.place(relx=0.63, rely=0.45, relwidth=0.26, relheight=0.07)
-    add_placeholder(input_tipo, "externa/interna")
-    
-    # {=======================BOF=========================}
-    label_BOF = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "BOF: ", fundo_branco, marrom, 'arial', '20', 'bold' )
-    label_BOF.place(relx=0.53, rely=0.6)
-
-    input_BOF = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand= validador(inp_frame))
-    input_BOF.place(relx=0.63, rely=0.6, relwidth=0.26, relheight=0.07)
-    
-    # {=======================ID=========================}
-    label_ID = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "ID: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_ID.place(relx=0.53, rely=0.75)
-
-    input_ID = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand= validador(inp_frame))
-    input_ID.place(relx=0.63, rely=0.75, relwidth=0.26, relheight=0.07)'''
     
     # {=======================Botão Voltar, Continuar e excluir=========================}
     bt_voltar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "VOLTAR",verde, bege,3,'15','bold',"hand2",lambda: FUNCOES_TKINTER.BOTAO_VOLTAR( inp_menu, inp_janela))
@@ -196,7 +165,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
         dados_obtidos = []
         input_grupo = input_usina_nome.get().upper() + '/' + estado_combobox.get() + '/' + input_usina_pais.get().upper()
 
-        dados_obtidos.append(input_furos.get().replace(" ", ""))
+        #dados_obtidos.append(input_furos.get().replace(" ", ""))
         
         if input_grupo != '//':
             dados_obtidos.append(input_grupo.replace(" ", ""))
@@ -204,14 +173,14 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
             dados_obtidos.append('')
         
         dados_obtidos.append(input_site.get().replace(" ", ""))
-        dados_obtidos.append(input_BOF.get().replace(" ", ""))
+        #dados_obtidos.append(input_BOF.get().replace(" ", ""))
         
-        if input_tipo.get() != 'externa/interna':
+        '''if input_tipo.get() != 'externa/interna':
             dados_obtidos.append(input_tipo.get().replace(" ", ""))
         else:
-            dados_obtidos.append('')
+            dados_obtidos.append('')'''
         
-        dados_obtidos.append(input_ID.get().replace(" ", ""))
+        #dados_obtidos.append(input_ID.get().replace(" ", ""))
         dados_obtidos.append('0') #vida inicial
         
         todos_tabela = tabela()
