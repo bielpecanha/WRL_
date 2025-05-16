@@ -94,14 +94,18 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     # {=======================Tela de Cadastro Usina=========================}
     
     # {=======================Imagem IFES=========================}
-    img = tk.PhotoImage(file = os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
-    img = img.subsample(3,3)
+    img = tk.PhotoImage(file=os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
     
+    img = img.subsample(6,6)
+
     fotoimg = tk.Label(frame_1,
-                       bg = 'green',
-                       bd = 0,
-                       image = img)
-    fotoimg.place(relx = 0.15, rely = 0.19, anchor = CENTER)
+                            bg = 'white',
+                            bd = 0,
+                            image = img)
+    
+    fotoimg.image = img
+    
+    fotoimg.place(relx=0.15, rely=0.19, anchor=CENTER)
     
     # {=======================Títulos=========================}
     titulo_1 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Usina", fundo_branco, verde_escuro, 'arial', '25', 'bold')
@@ -124,7 +128,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     label_usina_estado.place(relx=0.29, rely=0.45)
 
     estados_brasileiros = [ "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", 
-                            "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" ]
+                            "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" ] # Lista de estados brasileiros
     
     estado_var = StringVar()
     estado_combobox = ttk.Combobox(inp_frame, textvariable = estado_var, font=("Arial", 18), state="readonly")

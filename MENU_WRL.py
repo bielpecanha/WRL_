@@ -101,8 +101,8 @@ def componentes_frame1(inp_menu):
     img1_pg1 = img1_pg1.subsample(4,4)
 
     fotoimg1_pg1 = tk.Label(frame_1,
-                            bg= 'white',
-                            bd =0,
+                            bg = 'white',
+                            bd = 0,
                             image = img1_pg1)
     fotoimg1_pg1.place(relx=0.15, rely=0.19, anchor=CENTER)
 
