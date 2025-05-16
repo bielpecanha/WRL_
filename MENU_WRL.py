@@ -21,7 +21,6 @@ bege = '#C9B783' #Cor botão
 marrom = '#68584A' 
 verde_escuro = '#1F3422' #Titulos
 
-
 def menu_WRL():
     Janela_menu = tk.Tk()
     tela(Janela_menu)
@@ -93,7 +92,9 @@ def adicionar_detalhes(inp_menu):
 def componentes_frame1(inp_menu):
     # {=======================Título=========================}
     titulo = FUNCOES_TKINTER.CRIAR_LABEL(frame_1, "Wear\n     Register\n  Lances", 'white', verde_escuro, 'calibri', '42', 'bold')
-    titulo.place(relx=0.2, rely=0.08)
+    titulo.grid(row=0, column=4, sticky='nsew')
+    
+    #titulo.place(relx=0.2, rely=0.08)
     
     # {=======================Imagem IFES=========================}
     img1_pg1 = tk.PhotoImage(file=os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
@@ -105,7 +106,10 @@ def componentes_frame1(inp_menu):
                             bd = 0,
                             image = img1_pg1)
     
-    fotoimg1_pg1.place(relx=0.15, rely=0.22, anchor=CENTER)
+    fotoimg1_pg1.grid(row=0, column=3, sticky='nsew')
+    
+    #fotoimg1_pg1.place(relx=0.15, rely=0.22, anchor=CENTER)
+    
 
     # {=======================Botões de Cadastro=========================}
     bt_cadastro_lanca = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'Cadastrar Bico',verde, bege,3,'38','bold',"hand2",lambda:ABA_CADASTRO_BICO(inp_menu))
@@ -124,9 +128,8 @@ def componentes_frame1(inp_menu):
     bt_iniciar_camera.place(relx=0.07, rely=0.44, relwidth=0.4, relheight=0.45)
     
     # {=======================FECHAR ABA=========================}
-    img_fechar = PhotoImage(file=r"C:\Users\gabri\OneDrive\Documentos\GitHub\WRL_\ICONES_FOTOS\fechar.png")
+    img_fechar = PhotoImage(file=r"C:\Users\20221CECA0402\Documents\GitHub\WRL_\ICONES_FOTOS\fechar.png")
 
-    #C:\Users\20221CECA0402\Documents\GitHub\WRL_\ICONES_FOTOS\fechar.png
      
     bt_fechar_aba_menu = tk.Button(frame_1, image=img_fechar, command=inp_menu.destroy,compound=tk.CENTER, bg="#DE1804", bd=3)
     bt_fechar_aba_menu.place(relx=0.94, rely=0.02, relwidth=0.04, relheight=0.06)
