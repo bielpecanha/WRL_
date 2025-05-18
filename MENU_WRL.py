@@ -33,6 +33,8 @@ def tela(inp_menu): # {=======================Configuração de tela============
     inp_menu.title("MENU - Wear Register Lances (WRL)")
     inp_menu.configure(background= verde_escuro)
     inp_menu.attributes("-fullscreen", True)
+    #inp_menu.rowconfigure(0, weight=1)
+    #inp_menu.columnconfigure(0, weight=1)
     
 def ABA_CADASTRO_BICO(inp_menu):
     from CADASTRO_BICO_WRL import aba_cadastro_bico
@@ -69,14 +71,21 @@ def frames_da_tela(inp_menu):
     global frame_1
 
     frame_1 = FUNCOES_TKINTER.CRIAR_FRAME(inp_menu, 'white', '#668B8B')
+    #frame_1.grid(row=0, column=0, sticky="nsew") 
     frame_1.place(relx=0.01, rely=0.02,relwidth=0.98, relheight=0.96)
+    #frame_1.rowconfigure((0, 1, 2, 3, 4), weight=0)
+    #frame_1.columnconfigure((0, 1, 2, 3, 4), weight=1)
 
 def adicionar_detalhes(inp_menu):
     largura = inp_menu.winfo_screenwidth()
     altura = inp_menu.winfo_screenheight()
 
+    canvas = tk.Canvas(inp_menu, bg='white', highlightthickness=0)
+    #.grid(row=0, column=0, sticky="nsew")
+
     # Cria um Frame para o Canvas, que ficará no fundo
     canvas_frame = tk.Frame(inp_menu, width=largura, height=altura, bg='white')
+    #canvas.grid(row=0, column=0, sticky="nsew")
     canvas_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
 
     canvas = Canvas(canvas_frame, width=largura, height=altura, highlightthickness=0)
@@ -91,26 +100,27 @@ def adicionar_detalhes(inp_menu):
 
 def componentes_frame1(inp_menu):
     # {=======================Título=========================}
-    titulo = FUNCOES_TKINTER.CRIAR_LABEL(frame_1, "Wear\n     Register\n  Lances", 'white', verde_escuro, 'calibri', '42', 'bold')
-    titulo.grid(row=0, column=4, sticky='nsew')
-    
-    #titulo.place(relx=0.2, rely=0.08)
+    titulo = FUNCOES_TKINTER.CRIAR_LABEL(frame_1, "Wear\n     Register\n  Lances", 'white', verde_escuro, 'calibri', '50', 'bold')
+    #titulo.pack(side='left', fill='x', padx=10)
+    #titulo.grid(row=1, column=3, rowspan=2, padx=50, pady=50, sticky='s')
+    #titulo.grid(row=0, column=1, rowspan=1, padx=5, pady=5, sticky='nsw')
+    titulo.place(relx=0.23, rely=0.05)
     
     # {=======================Imagem IFES=========================}
     img1_pg1 = tk.PhotoImage(file=os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
-    
-    img1_pg1 = img1_pg1.subsample(4,4)
+    img1_pg1 = img1_pg1.subsample(3,3)
 
     fotoimg1_pg1 = tk.Label(frame_1,
                             bg = 'white',
                             bd = 0,
                             image = img1_pg1)
     
-    fotoimg1_pg1.grid(row=0, column=3, sticky='nsew')
-    
-    #fotoimg1_pg1.place(relx=0.15, rely=0.22, anchor=CENTER)
-    
+    #fotoimg1_pg1.pack(side='left', before=titulo, fill='x', padx=10)
 
+    #fotoimg1_pg1.grid(row=0, column=0, padx=20, pady=20, sticky='s')
+    #fotoimg1_pg1.grid(row=1, column=1, rowspan=2, padx=50, pady=50, sticky='nsw')
+    fotoimg1_pg1.place(relx=0.15, rely=0.22, anchor=CENTER)
+    
     # {=======================Botões de Cadastro=========================}
     bt_cadastro_lanca = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'Cadastrar Bico',verde, bege,3,'38','bold',"hand2",lambda:ABA_CADASTRO_BICO(inp_menu))
     bt_cadastro_lanca.place(relx=0.55, rely=0.44, relwidth=0.4, relheight=0.2)
@@ -128,8 +138,8 @@ def componentes_frame1(inp_menu):
     bt_iniciar_camera.place(relx=0.07, rely=0.44, relwidth=0.4, relheight=0.45)
     
     # {=======================FECHAR ABA=========================}
-    img_fechar = PhotoImage(file=r"C:\Users\20221CECA0402\Documents\GitHub\WRL_\ICONES_FOTOS\fechar.png")
-
+    img_fechar = PhotoImage(file=r"C:\Users\gabri\OneDrive\Documentos\GitHub\WRL_\ICONES_FOTOS\fechar.png")
+    #C:\Users\20221CECA0402\Documents\GitHub\WRL_\ICONES_FOTOS\fechar.png
      
     bt_fechar_aba_menu = tk.Button(frame_1, image=img_fechar, command=inp_menu.destroy,compound=tk.CENTER, bg="#DE1804", bd=3)
     bt_fechar_aba_menu.place(relx=0.94, rely=0.02, relwidth=0.04, relheight=0.06)
