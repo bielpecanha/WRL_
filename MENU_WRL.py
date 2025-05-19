@@ -103,8 +103,8 @@ def componentes_frame1(inp_menu):
     titulo = FUNCOES_TKINTER.CRIAR_LABEL(frame_1, "Wear\n     Register\n  Lances", 'white', verde_escuro, 'calibri', '50', 'bold')
     #titulo.pack(side='left', fill='x', padx=10)
     #titulo.grid(row=1, column=3, rowspan=2, padx=50, pady=50, sticky='s')
-    #titulo.grid(row=0, column=1, rowspan=1, padx=5, pady=5, sticky='nsw')
-    titulo.place(relx=0.23, rely=0.05)
+    titulo.grid(row=0, column=3, rowspan=1, padx=5, pady=5, sticky='nsw')
+    #titulo.place(relx=0.23, rely=0.05)
     
     # {=======================Imagem IFES=========================}
     img1_pg1 = tk.PhotoImage(file=os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
@@ -117,9 +117,10 @@ def componentes_frame1(inp_menu):
     
     #fotoimg1_pg1.pack(side='left', before=titulo, fill='x', padx=10)
 
-    #fotoimg1_pg1.grid(row=0, column=0, padx=20, pady=20, sticky='s')
+    fotoimg1_pg1.grid(row=0, column=1, padx=20, pady=20, sticky='s')
+    #fotoimg1_pg1.grid(row=0, column=1, rowspan=1, padx=20, pady=20, sticky='nsw')
     #fotoimg1_pg1.grid(row=1, column=1, rowspan=2, padx=50, pady=50, sticky='nsw')
-    fotoimg1_pg1.place(relx=0.15, rely=0.22, anchor=CENTER)
+    #fotoimg1_pg1.place(relx=0.15, rely=0.22, anchor=CENTER)
     
     # {=======================Botões de Cadastro=========================}
     bt_cadastro_lanca = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'Cadastrar Bico',verde, bege,3,'38','bold',"hand2",lambda:ABA_CADASTRO_BICO(inp_menu))
@@ -138,7 +139,7 @@ def componentes_frame1(inp_menu):
     bt_iniciar_camera.place(relx=0.07, rely=0.44, relwidth=0.4, relheight=0.45)
     
     # {=======================FECHAR ABA=========================}
-    img_fechar = PhotoImage(file=r"C:\Users\gabri\OneDrive\Documentos\GitHub\WRL_\ICONES_FOTOS\fechar.png")
+    img_fechar = PhotoImage(file=r"C:\Users\20221CECA0402\Documents\GitHub\WRL_\ICONES_FOTOS\fechar.png")
     #C:\Users\20221CECA0402\Documents\GitHub\WRL_\ICONES_FOTOS\fechar.png
      
     bt_fechar_aba_menu = tk.Button(frame_1, image=img_fechar, command=inp_menu.destroy,compound=tk.CENTER, bg="#DE1804", bd=3)

@@ -129,7 +129,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     #OBS: por filtros pro ID, tipo e BOF( para não confundir os locais),mas para isso preciso de parametrosoferecidos pelo cliente
     
     # {=======================Título=========================}
-    titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '25', 'bold')
+    titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '35', 'bold')
     titulo.place(relx=0.35, rely=0.05) 
 
     # {=======================Logo IFES=========================}
@@ -147,7 +147,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     # {=======================USINA=========================}
     label_usina = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Usina: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina.place(relx=0.03, rely=0.25)
+    label_usina.place(relx=0.06, rely=0.25)
 
     Var_Usina = tk.StringVar(inp_frame)
 
@@ -157,7 +157,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     # {=======================SITE=========================}
     label_site = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Site: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_site.place(relx=0.03, rely=0.40)
+    label_site.place(relx=0.1, rely=0.40)
 
     Var_site = tk.StringVar(inp_frame)
 
@@ -184,7 +184,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     
     # {=======================TIPO=========================}
     label_tipo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Tipo: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_tipo.place(relx=0.49, rely=0.55)
+    label_tipo.place(relx=0.52, rely=0.55)
 
     input_tipo = tk.Entry(inp_frame,font=("Arial", 18))
     input_tipo.place(relx=0.64, rely=0.55, relwidth=0.26, relheight=0.07)
@@ -309,7 +309,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     
 def componentes_frame2(inp_frame):
     # {=======================Título=========================}
-    titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Bicos Registrados", fundo_branco, verde_escuro, 'arial', '25', 'bold')
+    titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Bicos Registrados", fundo_branco, verde_escuro, 'arial', '35', 'bold')
     titulo.place(relx =0.3, rely=0.05) 
     
     Tabela = ttk.Treeview(inp_frame, height=10,column=("col1", "col2", "col3", "col4", "col5","col6","col7", "col8", "col9"),style="mystyle.Treeview")

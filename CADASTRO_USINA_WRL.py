@@ -106,7 +106,8 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     fotoimg.place(relx = 0.05, rely = 0.10, anchor = CENTER)
     
     # {=======================Títulos=========================}
-    titulo_1 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Usina", fundo_branco, verde_escuro, 'arial', '25', 'bold')
+    titulo_1 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Usina", fundo_branco, verde_escuro, 'arial', '35', 'bold')
+    #titulo_1.grid(row=1, column=3, rowspan=1, padx=20, pady=20, sticky='nsew')
     titulo_1.place(relx=0.41, rely=0.10) 
     
     #titulo_2 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Primeiro Registro\nda nova Usina", fundo_branco, verde_escuro, 'arial', '25', 'bold')
