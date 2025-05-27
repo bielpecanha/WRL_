@@ -33,10 +33,6 @@ def tela(inp_menu): # {=======================Configuração de tela============
     inp_menu.title("MENU - Wear Register Lances (WRL)")
     inp_menu.configure(background= verde_escuro)
     inp_menu.attributes("-fullscreen", True)
-    inp_menu.rowconfigure([0, 1, 2, 3, 4], weight=1)
-    inp_menu.columnconfigure([0, 1, 2], weight=1)
-    #inp_menu.rowconfigure(0, weight=1)
-    #inp_menu.columnconfigure(0, weight=1)
     
 def ABA_CADASTRO_BICO(inp_menu):
     from CADASTRO_BICO_WRL import aba_cadastro_bico
@@ -109,7 +105,7 @@ def componentes_frame1(inp_menu):
     
     # {=======================Imagem IFES=========================}
     img1_pg1 = tk.PhotoImage(file=os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
-    img1_pg1 = img1_pg1.subsample(3,3)
+    img1_pg1 = img1_pg1.subsample(4,4)
 
     fotoimg1_pg1 = tk.Label(frame_1,
                             bg = 'white',

@@ -88,7 +88,9 @@ def frames_da_tela(inp_janela):
     global frame_1
     frame_1 = tk.Frame( inp_janela,
                         bg= fundo_branco)
-    frame_1.place(relx=0.01, rely=0.02,relwidth=0.98, relheight=0.96)
+    #frame_1.grid_rowconfigure([0, 1, 2, 3, 4, 5], weight=1)
+    #frame_1.grid_columnconfigure([0, 1, 2], weight=1)
+    frame_1.place(relx=0.01, rely=0.02, relwidth=0.98, relheight=0.96)
 
 def componentes_frame1(inp_frame,inp_janela, inp_menu):
     # {=======================Tela de Cadastro Usina=========================}
@@ -103,28 +105,35 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
                        image = img)
     
     fotoimg.image = img
-    fotoimg.place(relx = 0.05, rely = 0.10, anchor = CENTER)
+    fotoimg.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky='nsw')
+    #fotoimg.place(relx = 0.05, rely = 0.10, anchor = CENTER)
+
+    frame_1.grid_rowconfigure([0, 1, 2, 3, 4, 5], weight=1)
+    frame_1.grid_columnconfigure([0, 1, 2], weight=1)
     
     # {=======================Títulos=========================}
     titulo_1 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Usina", fundo_branco, verde_escuro, 'arial', '35', 'bold')
-    #titulo_1.grid(row=1, column=3, rowspan=1, padx=20, pady=20, sticky='nsew')
-    titulo_1.place(relx=0.41, rely=0.10) 
+    titulo_1.grid(row=0, column=1, rowspan=1, padx=20, pady=20, sticky='nsew')
+    #titulo_1.place(relx=0.41, rely=0.10) 
     
     #titulo_2 = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Primeiro Registro\nda nova Usina", fundo_branco, verde_escuro, 'arial', '25', 'bold')
     #titulo_2.place(relx =0.65, rely=0.05)
 
     # {=======================USINA - PAÍS=========================}
     label_usina_pais = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "País: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina_pais.place(relx=0.29, rely=0.3)
+    label_usina_pais.grid(row=1, column=0, rowspan=1, padx=20, pady=20, sticky='nsew')
+    #label_usina_pais.place(relx=0.29, rely=0.3)
 
     input_usina_pais = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand="key")
-    input_usina_pais.place(relx=0.35, rely=0.3, relwidth=0.35, relheight=0.07)
+    input_usina_pais.grid(row=1, column=1, rowspan=1, padx=20, pady=20, sticky='nsew')
+    #input_usina_pais.place(relx=0.35, rely=0.3, relwidth=0.35, relheight=0.07)
     vcmd2 = (input_usina_pais.register(ENTRY_STRING), '%P')
     input_usina_pais.config(validatecommand = vcmd2)
 
     # {=======================USINA - ESTADO=========================}
     label_usina_estado = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Estado: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina_estado.place(relx=0.27, rely=0.45)
+    label_usina_estado.grid(row=2, column=0, rowspan=1, padx=20, pady=20, sticky='nsew')
+    #label_usina_estado.place(relx=0.27, rely=0.45)
 
     estados_brasileiros = [ "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", 
                             "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" ] # Lista de estados brasileiros
@@ -132,27 +141,32 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     estado_var = StringVar()
     estado_combobox = ttk.Combobox(inp_frame, textvariable = estado_var, font=("Arial", 18), state="readonly")
     estado_combobox['values'] = estados_brasileiros
-    estado_combobox.place(relx=0.35, rely=0.45, relwidth=0.35, relheight=0.07)
+    estado_combobox.grid(row=2, column=1, rowspan=1, padx=20, pady=20, sticky='nsew')
+    #estado_combobox.place(relx=0.35, rely=0.45, relwidth=0.35, relheight=0.07)
     
     # {=======================USINA - NOME=========================}
     label_usina_nome = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Usina: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina_nome.place(relx=0.28, rely=0.6)
+    label_usina_nome.grid(row=3, column=0, rowspan=1, padx=20, pady=20, sticky='nsew')
+    #label_usina_nome.place(relx=0.28, rely=0.6)
 
     input_usina_nome = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand="key")
-    input_usina_nome.place(relx=0.35, rely=0.6, relwidth=0.35, relheight=0.07)
+    input_usina_nome.grid(row=3, column=1, rowspan=1, padx=20, pady=20, sticky='nsew')
+    #input_usina_nome.place(relx=0.35, rely=0.6, relwidth=0.35, relheight=0.07)
     
     # {=======================SITE=========================}
     label_site = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Site: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_site.place(relx=0.29, rely=0.75)
+    label_site.grid(row=4, column=0, rowspan=1, padx=20, pady=20, sticky='nsew')
+    #label_site.place(relx=0.29, rely=0.75)
 
     input_site = tk.Entry(inp_frame, validate= "key",font=("Arial", 18),  validatecommand="key")
-    input_site.place(relx=0.35, rely=0.75, relwidth=0.35, relheight=0.07)
+    input_site.grid(row=4, column=1, rowspan=1, padx=20, pady=20, sticky='nsew')
+    #input_site.place(relx=0.35, rely=0.75, relwidth=0.35, relheight=0.07)
 
 
-    
     # {=======================Botão Voltar, Continuar e excluir=========================}
     bt_voltar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "VOLTAR",verde, bege,3,'15','bold',"hand2",lambda: FUNCOES_TKINTER.BOTAO_VOLTAR( inp_menu, inp_janela))
-    bt_voltar.place(relx=0.05, rely=0.89, relwidth=0.2, relheight=0.08)
+    bt_voltar.grid(row=5, column=0, rowspan=1, padx=20, pady=20, sticky='nsew')
+    #bt_voltar.place(relx=0.05, rely=0.89, relwidth=0.2, relheight=0.08)
     
     # bt_continuar = fun1.CRIAR_BOTAO(inp_frame, "DELETAR", verde, bege,3,'15','bold',"hand2")#,lambda: deletar(inp_menu, inp_janela)
     # bt_continuar.place(relx=0.4, rely=0.89, relwidth=0.2, relheight=0.08)
