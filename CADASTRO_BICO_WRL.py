@@ -47,10 +47,6 @@ def tabela(): # {=========Informações da tabela(FRAME 2)=========}
     cursor.execute(comando)
     dados_tabela =cursor.fetchall()
     FUNCOES_BD.DESCONECTA_BD(conn)
-
-#C:/Users/gabri/OneDrive/Documentos/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db
-    #C:/Users/20221CECA0402/Documents/GitHub/WRL_/dados_bd/DADOS_EMPRESAS.db
-
     return dados_tabela
 
 def ENTRY_INT(inp_text): #Limite do número inteiro do "validador"
@@ -128,9 +124,13 @@ def frames_da_tela(inp_janela):
 def componentes_frame1(inp_frame,inp_janela, inp_menu):
     #OBS: por filtros pro ID, tipo e BOF( para não confundir os locais),mas para isso preciso de parametrosoferecidos pelo cliente
     
+    frame_1.grid_rowconfigure([0, 1, 2, 3, 4, 5], weight=1)
+    frame_1.grid_columnconfigure([0, 1, 2, 3], weight=1)
+    
     # {=======================Título=========================}
     titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '35', 'bold')
-    titulo.place(relx=0.35, rely=0.05) 
+    titulo.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+    #titulo.place(relx=0.35, rely=0.05) 
 
     # {=======================Logo IFES=========================}
     img = tk.PhotoImage(file = os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
@@ -142,22 +142,26 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
                        image = img)
     
     fotoimg.image = img
-
-    fotoimg.place(relx = 0.12, rely = 0.10, anchor = CENTER)
+    
+    fotoimg.grid(row=0, column=0, padx=20, pady=20, sticky='w')
+    #fotoimg.place(relx = 0.12, rely = 0.10, anchor = CENTER)
 
     # {=======================USINA=========================}
     label_usina = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Usina: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina.place(relx=0.06, rely=0.25)
+    label_usina.grid(row=1, column=0, padx=10, pady=10, sticky="e")
+    #label_usina.place(relx=0.06, rely=0.25)
 
     Var_Usina = tk.StringVar(inp_frame)
 
     input_Usina = tk.OptionMenu(inp_frame, Var_Usina, *USINAS()) 
     input_Usina.config(font=("Arial", 18))
-    input_Usina.place(relx=0.2, rely=0.25, relwidth=0.75, relheight=0.07)
+    input_Usina.grid(row=1, column=1, columnspan=3, padx=20, pady=20, sticky="ew")
+    #input_Usina.place(relx=0.2, rely=0.25, relwidth=0.75, relheight=0.07)
 
     # {=======================SITE=========================}
     label_site = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Site: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_site.place(relx=0.1, rely=0.40)
+    label_site.grid(row=2, column=0, padx=10, pady=10, sticky="e")
+    #label_site.place(relx=0.1, rely=0.40)
 
     Var_site = tk.StringVar(inp_frame)
 
@@ -173,46 +177,58 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     input_site = tk.OptionMenu(inp_frame, Var_site, "") 
     input_site.config(font=("Arial", 18))
-    input_site.place(relx=0.20, rely=0.40, relwidth=0.75, relheight=0.07)
+    input_site.grid(row=2, column=1, columnspan=3, padx=10, pady=10, sticky="ew")
+    #input_site.place(relx=0.20, rely=0.40, relwidth=0.75, relheight=0.07)
 
     # {=======================FUROS=========================}
     label_furos = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Furos: ", fundo_branco, marrom, 'arial', '20', 'bold' )
-    label_furos.place(relx=0.03, rely=0.55)
+    label_furos.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
+    #label_furos.place(relx=0.03, rely=0.55)
 
     input_furos = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
-    input_furos.place(relx=0.2, rely=0.55, relwidth=0.26, relheight=0.07)
+    input_furos.grid(row=3, column=1, padx=10, pady=10, sticky="ew")
+    #input_furos.place(relx=0.2, rely=0.55, relwidth=0.26, relheight=0.07)
     
     # {=======================TIPO=========================}
     label_tipo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Tipo: ", fundo_branco, marrom, 'arial', '20', 'bold')
+    label_tipo.grid(row=3, column=3, padx=10, pady=10, sticky="ew")
     label_tipo.place(relx=0.52, rely=0.55)
 
     input_tipo = tk.Entry(inp_frame,font=("Arial", 18))
-    input_tipo.place(relx=0.64, rely=0.55, relwidth=0.26, relheight=0.07)
+    input_tipo.grid(row=3, column=3, padx=10, pady=10, sticky="ew")
+    #input_tipo.place(relx=0.64, rely=0.55, relwidth=0.26, relheight=0.07)
     add_placeholder(input_tipo, "externa/interna")
     
     # {=======================BOF=========================}
-    label_BOF = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "BOF: ", fundo_branco, marrom, 'arial', '20', 'bold' )
-    label_BOF.place(relx=0.06, rely=0.70)
+    label_BOF = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "BOF: ", fundo_branco, marrom, 'arial', '20', 'bold')
+    label_BOF.grid(row=4, column=0, padx=10, pady=10, sticky="e")
+    #label_BOF.place(relx=0.06, rely=0.70)
 
     input_BOF = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
-    input_BOF.place(relx=0.2, rely=0.70, relwidth=0.26, relheight=0.07)
+    input_BOF.grid(row=4, column=1, padx=10, pady=10, sticky="ew")
+    #input_BOF.place(relx=0.2, rely=0.70, relwidth=0.26, relheight=0.07)
     
     # {=======================ID=========================}
     label_ID = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "ID: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_ID.place(relx=0.55, rely=0.70)
+    label_ID.grid(row=4, column=2, padx=10, pady=10, sticky="e")
+    #label_ID.place(relx=0.55, rely=0.70)
 
     input_ID = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
-    input_ID.place(relx=0.64, rely=0.70, relwidth=0.26, relheight=0.07)
+    input_ID.grid(row=4, column=3, padx=10, pady=10, sticky="ew")
+    #input_ID.place(relx=0.64, rely=0.70, relwidth=0.26, relheight=0.07)
     
     # {=======================Botão Voltar, Continuar e excluir=========================}
     bt_voltar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "VOLTAR",verde, bege,3,'18','bold',"hand2",lambda: FUNCOES_TKINTER.BOTAO_VOLTAR( inp_menu, inp_janela))
-    bt_voltar.place(relx=0.05, rely=0.89, relwidth=0.2, relheight=0.08)
+    bt_voltar.grid(row=5, column=1, padx=20, pady=20, sticky="sew")
+    #bt_voltar.place(relx=0.05, rely=0.89, relwidth=0.2, relheight=0.08)
     
-    bt_continuar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "DELETAR", verde, bege,3,'18','bold',"hand2",lambda: deletar(inp_menu, inp_janela))
-    bt_continuar.place(relx=0.4, rely=0.89, relwidth=0.2, relheight=0.08)
+    bt_deletar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "DELETAR", verde, bege,3,'18','bold',"hand2",lambda: deletar(inp_menu, inp_janela))
+    bt_deletar.grid(row=5, column=2, columnspan=1, padx=20, pady=20, sticky="sew")
+    #bt_deletar.place(relx=0.4, rely=0.89, relwidth=0.2, relheight=0.08)
 
-    bt_continuar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "SALVAR",verde, bege,3,'18','bold',"hand2",lambda: salvar(inp_menu, inp_janela))
-    bt_continuar.place(relx=0.75, rely=0.89, relwidth=0.2, relheight=0.08)
+    bt_salvar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "SALVAR",verde, bege,3,'18','bold',"hand2",lambda: salvar(inp_menu, inp_janela))
+    bt_salvar.grid(row=5, column=3, padx=20, pady=20, sticky="sew")
+    #bt_salvar.place(relx=0.75, rely=0.89, relwidth=0.2, relheight=0.08)
     
     # {======================= Mostrando avisos =========================}
     def salvar(aba_1, aba_2):

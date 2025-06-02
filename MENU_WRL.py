@@ -20,6 +20,8 @@ verde = '#416951' #Cor botão
 bege = '#C9B783' #Cor botão
 marrom = '#68584A' 
 verde_escuro = '#1F3422' #Titulos
+branco = '#FFFFFF' #Cor do texto
+bege_claro = "#E9DDBF" #Cor botão
 
 def menu_WRL():
     Janela_menu = tk.Tk()
@@ -105,7 +107,7 @@ def componentes_frame1(inp_menu):
     
     # {=======================Imagem IFES=========================}
     img1_pg1 = tk.PhotoImage(file=os.path.join(pasta, "ICONES_FOTOS", "ifes.png"))
-    img1_pg1 = img1_pg1.subsample(4,4)
+    img1_pg1 = img1_pg1.subsample(3,3)
 
     fotoimg1_pg1 = tk.Label(frame_1,
                             bg = 'white',
@@ -121,27 +123,27 @@ def componentes_frame1(inp_menu):
     frame_1.grid_columnconfigure([0, 1, 2], weight=1)
     
     # {=======================Botões de Cadastro=========================}
-    bt_cadastro_lanca = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'Cadastrar Bico',verde, bege,3,'38','bold',"hand2",lambda:ABA_CADASTRO_BICO(inp_menu))
+    bt_cadastro_lanca = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'Cadastrar Bico',verde, branco,5,'38','bold',"hand2",lambda:ABA_CADASTRO_BICO(inp_menu))
     bt_cadastro_lanca.grid(row=2, column=1, rowspan=1, columnspan=2, padx=30, pady=10, sticky='nsew')
     #bt_cadastro_lanca.place(relx=0.55, rely=0.44, relwidth=0.4, relheight=0.2)
 
-    bt_cadastro_funcionario = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'Cadastrar Usina',verde,bege,3,'38','bold',"hand2",lambda:ABA_CADASTRO_USINA(inp_menu))
+    bt_cadastro_funcionario = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'Cadastrar Usina',verde,branco,5,'38','bold',"hand2",lambda:ABA_CADASTRO_USINA(inp_menu))
     bt_cadastro_funcionario.grid(row=3, column=1, rowspan=1, columnspan=2, padx=30, pady=10, sticky='nsew')
     #bt_cadastro_funcionario.place(relx=0.55, rely=0.69, relwidth=0.4, relheight=0.2)
 
     # {=======================Botões de Visualização=========================}
-    bt_visualizar_site = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'SITE WRL',verde,bege,4,'38','bold',"hand2", lambda:abrir_streamlit())
+    bt_visualizar_site = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'SITE WRL',verde,branco,5,'38','bold',"hand2", lambda:abrir_streamlit())
     bt_visualizar_site.grid(row=1, column=1, rowspan=1, columnspan=2, padx=30, pady=10, sticky='nsew')
     #bt_visualizar_site.place(relx=0.55, rely=0.19, relwidth=0.4, relheight=0.2)
     
     # {=======================Botão Iniciar Inspeção=========================}
     icone_camera = file=os.path.join(pasta,"ICONES_FOTOS","png_cam.png")
-    bt_iniciar_camera = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'Iniciar Inspeção',bege,verde,4,'38','bold',"circle", lambda:INICIAR_INSPECAO(inp_menu),inp_imagem=icone_camera, imagem_posicao='bottom')
+    bt_iniciar_camera = FUNCOES_TKINTER.CRIAR_BOTAO(frame_1,'Iniciar Inspeção',bege_claro,verde,5,'38','bold',"circle", lambda:INICIAR_INSPECAO(inp_menu),inp_imagem=icone_camera, imagem_posicao='bottom')
     bt_iniciar_camera.grid(row=1, column=0, rowspan=3, padx=30, pady=10, sticky='nsew')
     #bt_iniciar_camera.place(relx=0.07, rely=0.44, relwidth=0.4, relheight=0.45)
     
     # {=======================FECHAR ABA=========================}
-    img_fechar = PhotoImage(file=r"C:\Users\gabri\OneDrive\Documentos\GitHub\WRL_\ICONES_FOTOS\fechar.png")
+    img_fechar = PhotoImage(file=r"C:\Users\20221CECA0402\Documents\GitHub\WRL_\ICONES_FOTOS\fechar.png")
     #C:\Users\20221CECA0402\Documents\GitHub\WRL_\ICONES_FOTOS\fechar.png
      
     bt_fechar_aba_menu = tk.Button(frame_1, image=img_fechar, command=inp_menu.destroy,compound=tk.CENTER, bg="#DE1804", bd=3)
