@@ -363,11 +363,13 @@ def componentes_frame2(inp_frame):
     for dado in tabela():
         Tabela.insert("", tk.END, values=(dado[0], dado[1], dado[2], dado[3], dado[4], dado[5], dado[6]))
         
-    Tabela.place(relx=0.05, rely=0.2, relwidth=0.89, relheight=0.75)
+    Tabela.grid(row=1, column=0, rowspan=4, columnspan=4, padx=20, pady=20, sticky="nsew")
+    #Tabela.place(relx=0.05, rely=0.2, relwidth=0.89, relheight=0.75)
     
     scroolLista = tk.Scrollbar(inp_frame, orient='vertical', command=Tabela.yview)
     Tabela.configure(yscrollcommand = scroolLista.set)
-    scroolLista.place(relx=0.94, rely=0.2, relwidth=0.02, relheight=0.75)
+    scroolLista.grid(row=1, column=4, rowspan=4, sticky='nsw', padx=20, pady=20)
+    #scroolLista.place(relx=0.94, rely=0.2, relwidth=0.02, relheight=0.75)
        
 def aba_cadastro_bico(inp_janela):
     janela_atual = tk.Toplevel(inp_janela)
