@@ -59,7 +59,8 @@ st.markdown('<style>div.block-container{padding-top:1rem;}</> ',unsafe_allow_htm
 st.sidebar.header("Wear Register Lances")
 
 # {=======================Seleção de Bico=========================}
-conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
+#conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
+conn = sql.connect(pasta_bd())
 cursor = conn.cursor()
 cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
 tables = cursor.fetchall()
@@ -153,7 +154,8 @@ st.markdown('''<div style="text-align: justify;">
 if not selected_tables:
     # # {======================= Gráficos de pizza =========================}
     # # {======================= Para USIMINAS/ES/BRASIL =========================}
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect("C:\Users\20221CECA0402\Documents\GitHub\WRL_\dados_bd\REGISTROS_DESGASTE.db")
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     query = "SELECT GERAL, COUNT(*) as quantidade FROM B6 WHERE GRUPO = 'USIMINAS/ES/BRASIL' GROUP BY GERAL"
     df = pd.read_sql_query(query, conn)
     conn.close()
