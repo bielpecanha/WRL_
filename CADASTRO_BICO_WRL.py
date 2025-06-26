@@ -125,11 +125,12 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     #OBS: por filtros pro ID, tipo e BOF( para não confundir os locais),mas para isso preciso de parametrosoferecidos pelo cliente
     
     frame_1.grid_rowconfigure([0, 1, 2, 3, 4, 5], weight=1)
-    frame_1.grid_columnconfigure([0, 1, 2, 3, 4], weight=1)
+    #frame_1.grid_columnconfigure([0, 1, 2], weight=1)
+    frame_1.grid_columnconfigure([0, 1, 2, 3, 4, 5], weight=1)
     
     # {=======================Título=========================}
     titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '35', 'bold')
-    titulo.grid(row=0, column=2, padx=20, pady=20, sticky="nsw")
+    titulo.grid(row=0, column=2, columnspan=2, padx=20, pady=20, sticky="nsw")
     #titulo.place(relx=0.35, rely=0.05) 
 
     # {=======================Logo IFES=========================}
@@ -155,7 +156,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     input_Usina = tk.OptionMenu(inp_frame, Var_Usina, *USINAS()) 
     input_Usina.config(font=("Arial", 18))
-    input_Usina.grid(row=1, column=1, columnspan=3, padx=20, pady=20, sticky="ew")
+    input_Usina.grid(row=1, column=1, columnspan=4, padx=20, pady=20, sticky="ew")
     #input_Usina.place(relx=0.2, rely=0.25, relwidth=0.75, relheight=0.07)
 
     # {=======================SITE=========================}
@@ -195,7 +196,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     #label_tipo.place(relx=0.52, rely=0.55)
 
     input_tipo = tk.Entry(inp_frame,font=("Arial", 18))
-    input_tipo.grid(row=3, column=3, padx=20, pady=10, sticky="ew")
+    input_tipo.grid(row=3, column=3, columnspan=2, padx=20, pady=10, sticky="ew")
     #input_tipo.place(relx=0.64, rely=0.55, relwidth=0.26, relheight=0.07)
     add_placeholder(input_tipo, "externa/interna")
     
@@ -217,17 +218,17 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     input_ID.grid(row=4, column=3, padx=10, pady=10, sticky="ew")
     #input_ID.place(relx=0.64, rely=0.70, relwidth=0.26, relheight=0.07)
     
-    # {=======================Botão Voltar, Continuar e excluir=========================}
+    # {=======================Botão Voltar, Continuar e Deletar=========================}
     bt_voltar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "VOLTAR",verde, bege,3,'18','bold',"hand2",lambda: FUNCOES_TKINTER.BOTAO_VOLTAR(inp_menu, inp_janela))
-    bt_voltar.grid(row=5, column=0, columnspan=1, padx=20, pady=10, sticky="sew")
+    bt_voltar.grid(row=5, column=0, columnspan=2, padx=20, pady=10, sticky="sew")
     #bt_voltar.place(relx=0.05, rely=0.89, relwidth=0.2, relheight=0.08)
     
     bt_deletar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "DELETAR", verde, bege,3,'18','bold',"hand2",lambda: deletar(inp_menu, inp_janela))
-    bt_deletar.grid(row=5, column=2, columnspan=1, padx=80, pady=10, sticky="sew")
+    bt_deletar.grid(row=5, column=2, columnspan=3, padx=80, pady=10, sticky="sew")
     #bt_deletar.place(relx=0.4, rely=0.89, relwidth=0.2, relheight=0.08)
 
     bt_salvar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "SALVAR",verde, bege,3,'18','bold',"hand2",lambda: salvar(inp_menu, inp_janela))
-    bt_salvar.grid(row=5, column=3, columnspan=1, padx=50, pady=10, sticky="sew")
+    bt_salvar.grid(row=5, column=6, columnspan=2, padx=20, pady=10, sticky="sew")
     #bt_salvar.place(relx=0.75, rely=0.89, relwidth=0.2, relheight=0.08)
     
     # {======================= Mostrando avisos =========================}
@@ -363,11 +364,13 @@ def componentes_frame2(inp_frame):
     for dado in tabela():
         Tabela.insert("", tk.END, values=(dado[0], dado[1], dado[2], dado[3], dado[4], dado[5], dado[6]))
         
-    Tabela.place(relx=0.05, rely=0.2, relwidth=0.89, relheight=0.75)
+    Tabela.grid(row=1, column=0, rowspan=4, columnspan=4, padx=20, pady=20, sticky="nsew")
+    #Tabela.place(relx=0.05, rely=0.2, relwidth=0.89, relheight=0.75)
     
     scroolLista = tk.Scrollbar(inp_frame, orient='vertical', command=Tabela.yview)
     Tabela.configure(yscrollcommand = scroolLista.set)
-    scroolLista.place(relx=0.94, rely=0.2, relwidth=0.02, relheight=0.75)
+    scroolLista.grid(row=1, column=4, rowspan=4, sticky='nsw', padx=20, pady=20)
+    #scroolLista.place(relx=0.94, rely=0.2, relwidth=0.02, relheight=0.75)
        
 def aba_cadastro_bico(inp_janela):
     janela_atual = tk.Toplevel(inp_janela)
