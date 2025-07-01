@@ -5,9 +5,13 @@ def folder():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(base_dir)
 
-def pasta_bd():
+def pasta_bd_reg_WRL():
     # Define o caminho para o banco de dados relativo ao diretório base
     return os.path.join(folder(), "dados_bd\REGISTROS_WRL.db")
+
+def pasta_bd_reg_desgaste():
+    # Define o caminho para o banco de dados relativo ao diretório base
+    return os.path.join(folder(), "dados_bd\REGISTROS_DESGASTE.db")
 
 def pasta_site():
     # Define o caminho para a pasta SITE relativo ao diretório base

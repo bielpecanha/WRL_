@@ -14,7 +14,7 @@ import sys
 #acessar pasta principal para importar os módulos de lá
 pasta_sup = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(pasta_sup)
-from direction import folder, pasta_bd
+from direction import folder, pasta_bd_reg_WRL, pasta_bd_reg_desgaste
 
 warnings.filterwarnings("ignore")  # ->ignorar os erros que aparecem no site
 
@@ -60,7 +60,7 @@ st.sidebar.header("Wear Register Lances")
 
 # {=======================Seleção de Bico=========================}
 #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
-conn = sql.connect(pasta_bd())
+conn = sql.connect(pasta_bd_reg_WRL())
 cursor = conn.cursor()
 cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
 tables = cursor.fetchall()
@@ -87,7 +87,8 @@ if selected_tables:
 
     os.chdir(fr"{pasta}")
     
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
+    conn = sql.connect(pasta_bd_reg_WRL())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
     cursor = conn.cursor()
     print("Conectado ao banco de dados")
 
@@ -154,7 +155,7 @@ st.markdown('''<div style="text-align: justify;">
 if not selected_tables:
     # # {======================= Gráficos de pizza =========================}
     # # {======================= Para USIMINAS/ES/BRASIL =========================}
-    conn = sql.connect("C:\Users\20221CECA0402\Documents\GitHub\WRL_\dados_bd\REGISTROS_DESGASTE.db")
+    conn = sql.connect("C:/Users/20221CECA0402/Documents/GitHub/WRL_/dados_bd/REGISTROS_DESGASTE.db")
     #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     query = "SELECT GERAL, COUNT(*) as quantidade FROM B6 WHERE GRUPO = 'USIMINAS/ES/BRASIL' GROUP BY GERAL"
     df = pd.read_sql_query(query, conn)
@@ -182,7 +183,8 @@ if not selected_tables:
     ax.axis('off')  # Remove o eixo
 
     # # # {======================= Para MINERADORA/BH/BRASIL =========================}
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect(pasta_bd_reg_desgaste())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     query = "SELECT GERAL, COUNT(*) as quantidade FROM B6 WHERE GRUPO = 'MINERADORA/BH/BRASIL' GROUP BY GERAL"
     df = pd.read_sql_query(query, conn)
     conn.close()
@@ -204,7 +206,8 @@ if not selected_tables:
     # # {======================= Tabelas =========================}
     # # {======================= ID X ESTADO =========================}
     # USIMINAS/ES/BRASIL
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect(pasta_bd_reg_desgaste())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     cursor = conn.cursor()
     # Extraindo dados ID e ESTADO do banco 
     comando = "SELECT ID, GERAL FROM B6 WHERE GRUPO = 'USIMINAS/ES/BRASIL'"
@@ -220,7 +223,8 @@ if not selected_tables:
     tabela1_US = tabela1_US.sort_values(by='ID')
 
      # MINERADORA/BH/BRASIL
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect(pasta_bd_reg_desgaste())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     cursor = conn.cursor()
     # Extraindo dados ID e ESTADO do banco 
     comando = "SELECT ID, GERAL FROM B6 WHERE GRUPO = 'MINERADORA/BH/BRASIL'"
@@ -237,7 +241,8 @@ if not selected_tables:
 
     # # {======================= ID X MANUTENÇÃO =========================}
     # USIMINAS/ES/BRASIL
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
+    conn = sql.connect(pasta_bd_reg_WRL())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
     cursor = conn.cursor()
     # Extraindo dados ID, VIDA e DATA do banco
     comando = "SELECT ID, VIDA, DATA FROM B6 WHERE GRUPO = 'USIMINAS/ES/BRASIL'"
@@ -255,7 +260,8 @@ if not selected_tables:
     tabela2_US = tabela2_US.sort_values(by='ID')
 
     # MINERADORA/BH/BRASIL
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
+    conn = sql.connect(pasta_bd_reg_WRL())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
     cursor = conn.cursor()
     # Extraindo dados ID, VIDA e DATA do banco
     comando = "SELECT ID, VIDA, DATA FROM B6 WHERE GRUPO = 'MINERADORA/BH/BRASIL'"
@@ -347,7 +353,8 @@ if not selected_tables:
 if selected_tables and not grupo:
     # # {======================= Gráfico de pizza - Considerando lanças de 4 e 6 furos =========================}
     # # {======================= Para USIMINAS/ES/BRASIL =========================}
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect(pasta_bd_reg_desgaste())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     query = "SELECT GERAL, COUNT(*) as quantidade FROM B6 WHERE GRUPO = 'USIMINAS/ES/BRASIL' GROUP BY GERAL"
     df = pd.read_sql_query(query, conn)
     conn.close()
@@ -374,7 +381,8 @@ if selected_tables and not grupo:
     ax.axis('off')  # Remove o eixo
 
     # # # {======================= Para MINERADORA/BH/BRASIL =========================}
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect(pasta_bd_reg_desgaste())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     query = "SELECT GERAL, COUNT(*) as quantidade FROM B6 WHERE GRUPO = 'MINERADORA/BH/BRASIL' GROUP BY GERAL"
     df = pd.read_sql_query(query, conn)
     conn.close()
@@ -396,7 +404,8 @@ if selected_tables and not grupo:
     # # {======================= Tabelas =========================}
     # # {======================= ID X ESTADO =========================}
     # USIMINAS/ES/BRASIL
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect(pasta_bd_reg_desgaste())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     cursor = conn.cursor()
     # Extraindo dados ID e ESTADO do banco 
     comando = "SELECT ID, GERAL FROM B6 WHERE GRUPO = 'USIMINAS/ES/BRASIL'"
@@ -412,7 +421,8 @@ if selected_tables and not grupo:
     tabela1_US = tabela1_US.sort_values(by='ID')
 
      # MINERADORA/BH/BRASIL
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect(pasta_bd_reg_desgaste())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     cursor = conn.cursor()
     # Extraindo dados ID e ESTADO do banco 
     comando = "SELECT ID, GERAL FROM B6 WHERE GRUPO = 'MINERADORA/BH/BRASIL'"
@@ -429,7 +439,8 @@ if selected_tables and not grupo:
 
     # # {======================= ID X MANUTENÇÃO =========================}
     # USIMINAS/ES/BRASIL
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
+    conn = sql.connect(pasta_bd_reg_WRL())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
     cursor = conn.cursor()
     # Extraindo dados ID, VIDA e DATA do banco
     comando = "SELECT ID, VIDA, DATA FROM B6 WHERE GRUPO = 'USIMINAS/ES/BRASIL'"
@@ -447,7 +458,8 @@ if selected_tables and not grupo:
     tabela2_US = tabela2_US.sort_values(by='ID')
 
     # MINERADORA/BH/BRASIL
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
+    conn = sql.connect(pasta_bd_reg_WRL())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
     cursor = conn.cursor()
     # Extraindo dados ID, VIDA e DATA do banco
     comando = "SELECT ID, VIDA, DATA FROM B6 WHERE GRUPO = 'MINERADORA/BH/BRASIL'"
@@ -534,7 +546,8 @@ if selected_tables and not grupo:
 
 if selected_tables and grupo:
     # Gráfico 
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect(pasta_bd_reg_desgaste())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     query = f"SELECT GERAL, COUNT(*) as quantidade FROM {selected_tables[0]} WHERE GRUPO = '{grupo[0]}' GROUP BY GERAL"
     df = pd.read_sql_query(query, conn)
     conn.close()
@@ -566,7 +579,8 @@ if selected_tables and grupo:
         return ['background-color: #d9d9d9']*len(s)
 
     # # {======================= ID X ESTADO =========================}
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect(pasta_bd_reg_desgaste())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     cursor = conn.cursor()
     # Extraindo dados ID e ESTADO do banco 
     comando = f"SELECT ID, GERAL FROM {selected_tables[0]} WHERE GRUPO = '{grupo[0]}'"
@@ -582,7 +596,8 @@ if selected_tables and grupo:
     tabela1 = tabela1.sort_values(by='ID')
 
     # # {======================= ID X MANUTENÇÃO =========================}
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
+    conn = sql.connect(pasta_bd_reg_WRL())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_WRL.db')
     cursor = conn.cursor()
     # Extraindo dados ID, VIDA e DATA do banco
     comando = f"SELECT ID, VIDA, DATA FROM {selected_tables[0]} WHERE GRUPO = '{grupo[0]}'"
@@ -635,7 +650,8 @@ if selected_tables and grupo:
 if id and selected_tables:
     # {=======================Gráfico de pizza=========================}
     # Gráfico para USIMINAS/ES/BRASIL
-    conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+    conn = sql.connect(pasta_bd_reg_desgaste())
+    #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
     query = f"SELECT ESTADO, COUNT(*) as quantidade FROM {selected_tables[0]} WHERE GRUPO = '{grupo[0]}' AND ID = '{id[0]}' GROUP BY ESTADO"
     df = pd.read_sql_query(query, conn)
     conn.close()
@@ -736,7 +752,8 @@ if id and selected_tables:
             
             # {=======================Gráfico de pizza=========================}
             # Gráfico para USIMINAS/ES/BRASIL
-            conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+            conn = sql.connect(pasta_bd_reg_desgaste())
+            #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
             query = f"SELECT ESTADO, COUNT(*) as quantidade FROM {selected_tables[0]} WHERE GRUPO = '{grupo[0]}' AND ID = '{id[0]}' AND VIDA = '{vida}' GROUP BY ESTADO"
             df = pd.read_sql_query(query, conn)
             conn.close()
@@ -763,7 +780,8 @@ if id and selected_tables:
             ax.axis('off')  # Remove o eixo
 
             # # {======================= REGIÃO X DIAMETROS =========================}
-            conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
+            conn = sql.connect(pasta_bd_reg_desgaste())
+            #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
             cursor = conn.cursor()
             # Extraindo dados ID e ESTADO do banco 
             comando = f"SELECT REGIÃO, MEDIDA, ESTADO FROM {selected_tables[0]} WHERE GRUPO = '{grupo[0]}' AND VIDA = '{vida}'"
@@ -778,7 +796,7 @@ if id and selected_tables:
             # Ordenando em ordem crescente pelo 'ID'
             tabela2 = tabela2.sort_values(by='REGIÃO')
 
-            image_7F = Image.open(fr'{pasta_bd()}\FOTOS_SEGMENTADA\{registro}') 
+            image_7F = Image.open(fr'{pasta_bd_reg_WRL()}\FOTOS_SEGMENTADA\{registro}') 
 
             # Exibindo os gráfico e tabelas
             col1, col2, col3 = st.columns(3)
