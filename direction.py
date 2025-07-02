@@ -16,4 +16,3 @@ def pasta_bd_reg_desgaste():
 def pasta_site():
     # Define o caminho para a pasta SITE relativo ao diretório base
     return os.path.join(folder(), "SITE")
-

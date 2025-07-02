@@ -5,10 +5,10 @@ import colorama as color
 import FUNCOES_BD
 import FUNCOES_TKINTER
 import PIL
-from direction import pasta_bd
+from direction import pasta_bd_reg_WRL
 from direction import folder
 
-caminho = pasta_bd()
+caminho = pasta_bd_reg_WRL()
 pasta = folder()
 
 def USINAS():
@@ -122,11 +122,11 @@ def frames_da_tela(inp_janela):
     frame_2.place(relx=0.45, rely=0.02,relwidth=0.54, relheight=0.96)
     
 def componentes_frame1(inp_frame,inp_janela, inp_menu):
-    #OBS: por filtros pro ID, tipo e BOF( para não confundir os locais),mas para isso preciso de parametrosoferecidos pelo cliente
+    #OBS: por filtros pro ID, tipo e BOF (para não confundir os locais), mas para isso preciso de parametros oferecidos pelo cliente
     
     frame_1.grid_rowconfigure([0, 1, 2, 3, 4, 5], weight=1)
-    #frame_1.grid_columnconfigure([0, 1, 2], weight=1)
     frame_1.grid_columnconfigure([0, 1, 2, 3, 4, 5], weight=1)
+    #frame_1.grid_columnconfigure([0, 1, 2], weight=1)
     
     # {=======================Título=========================}
     titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '35', 'bold')

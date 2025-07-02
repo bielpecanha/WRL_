@@ -779,7 +779,7 @@ if id and selected_tables:
             fig_vida.patch.set_visible(False)  # Remove o fundo da figura
             ax.axis('off')  # Remove o eixo
 
-            # # {======================= REGIÃO X DIAMETROS =========================}
+            # # {======================= REGIÃO X DIÂMETROS =========================}
             conn = sql.connect(pasta_bd_reg_desgaste())
             #conn = sql.connect(fr'{pasta_bd()}\REGISTROS_DESGASTE.db')
             cursor = conn.cursor()

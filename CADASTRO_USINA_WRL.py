@@ -4,7 +4,7 @@ import tkinter as tk
 import colorama as color
 import FUNCOES_BD
 import FUNCOES_TKINTER
-from direction import pasta_bd, folder
+from direction import pasta_bd_reg_WRL, folder
 
 pasta = folder()
 
@@ -43,7 +43,7 @@ def ENTRY_STRING(inp_text):
     return all(char.isalpha() or char.isspace() for char in inp_text) or inp_text == ""
 
 def tabela(): # {=========Informações da tabela(FRAME 2)=========}
-    conn, cursor = FUNCOES_BD.CONECTA_BD(pasta_bd())
+    conn, cursor = FUNCOES_BD.CONECTA_BD(pasta_bd_reg_WRL())
     #conn, cursor = FUNCOES_BD.CONECTA_BD(fr'{pasta_bd()}\REGISTROS_WRL.db')
     comando = f"SELECT * FROM DADOS_EMPRESAS "
     cursor.execute(comando)
@@ -241,7 +241,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
         # Inserindo dados no banco de dados
         if flag:
-            conn, cursor = FUNCOES_BD.CONECTA_BD(pasta_bd())
+            conn, cursor = FUNCOES_BD.CONECTA_BD(pasta_bd_reg_WRL())
             #conn, cursor = FUNCOES_BD.CONECTA_BD(fr'{pasta_bd()}\REGISTROS_WRL.db')
             conn.commit()
             comando = f"INSERT INTO DADOS_EMPRESAS VALUES (?, ?, ?, ?, ?, ?, ?)"
