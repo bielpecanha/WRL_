@@ -47,6 +47,7 @@ def tabela(): # {=========Informações da tabela(FRAME 2)=========}
     cursor.execute(comando)
     dados_tabela =cursor.fetchall()
     FUNCOES_BD.DESCONECTA_BD(conn)
+
     return dados_tabela
 
 def ENTRY_INT(inp_text): #Limite do número inteiro do "validador"
@@ -122,15 +123,15 @@ def frames_da_tela(inp_janela):
     frame_2.place(relx=0.45, rely=0.02,relwidth=0.54, relheight=0.96)
     
 def componentes_frame1(inp_frame,inp_janela, inp_menu):
-    #OBS: por filtros pro ID, tipo e BOF (para não confundir os locais), mas para isso preciso de parametros oferecidos pelo cliente
+    #OBS: por filtros pro ID, tipo e BOF( para não confundir os locais),mas para isso preciso de parametrosoferecidos pelo cliente
     
-    frame_1.grid_rowconfigure([0, 1, 2, 3, 4, 5], weight=1)
-    frame_1.grid_columnconfigure([0, 1, 2, 3, 4, 5], weight=1)
-    #frame_1.grid_columnconfigure([0, 1, 2], weight=1)
-    
+    frame_1.grid_rowconfigure([0, 1, 2, 3, 4, 5, 6, 7], weight=1)
+    frame_1.grid_columnconfigure([1, 2, 3, 4, 5], weight=1)
+    #frame_1.grid_columnconfigure([0, 1, 2, 3, 4], weight=1)
+
     # {=======================Título=========================}
-    titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '35', 'bold')
-    titulo.grid(row=0, column=2, columnspan=2, padx=20, pady=20, sticky="nsw")
+    titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Cadastrar Bico", fundo_branco, verde_escuro, 'arial', '30', 'bold')
+    titulo.grid(row=0, column=1, columnspan=3, sticky="nsew")
     #titulo.place(relx=0.35, rely=0.05) 
 
     # {=======================Logo IFES=========================}
@@ -143,26 +144,26 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
                        image = img)
     
     fotoimg.image = img
-    
-    fotoimg.grid(row=0, column=0, padx=20, pady=20, sticky='w')
+
+    fotoimg.grid(row=0, column=0, pady=5, sticky='w')
     #fotoimg.place(relx = 0.12, rely = 0.10, anchor = CENTER)
 
     # {=======================USINA=========================}
     label_usina = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Usina: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_usina.grid(row=1, column=0, sticky="e")
-    #label_usina.place(relx=0.06, rely=0.25)
+    label_usina.grid(row=1, column=0, sticky="ew")
+    #label_usina.place(relx=0.03, rely=0.25)
 
     Var_Usina = tk.StringVar(inp_frame)
 
     input_Usina = tk.OptionMenu(inp_frame, Var_Usina, *USINAS()) 
     input_Usina.config(font=("Arial", 18))
-    input_Usina.grid(row=1, column=1, columnspan=4, padx=20, pady=20, sticky="ew")
+    input_Usina.grid(row=1, column=1, columnspan=4, padx=5, pady=5, sticky="ew")
     #input_Usina.place(relx=0.2, rely=0.25, relwidth=0.75, relheight=0.07)
 
     # {=======================SITE=========================}
     label_site = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Site: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_site.grid(row=2, column=0, padx=10, pady=10, sticky="e")
-    #label_site.place(relx=0.1, rely=0.40)
+    label_site.grid(row=2, column=0, sticky="ew")
+    #label_site.place(relx=0.03, rely=0.40)
 
     Var_site = tk.StringVar(inp_frame)
 
@@ -178,7 +179,7 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
 
     input_site = tk.OptionMenu(inp_frame, Var_site, "") 
     input_site.config(font=("Arial", 18))
-    input_site.grid(row=2, column=1, columnspan=3, padx=10, pady=10, sticky="ew")
+    input_site.grid(row=2, column=1, columnspan=4, padx=5, pady=5, sticky="ew")
     #input_site.place(relx=0.20, rely=0.40, relwidth=0.75, relheight=0.07)
 
     # {=======================FUROS=========================}
@@ -186,56 +187,63 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     label_furos.grid(row=3, column=0, sticky="ew")
     #label_furos.place(relx=0.03, rely=0.55)
 
-    input_furos = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
-    input_furos.grid(row=3, column=1, columnspan=2, padx=10, pady=10, sticky="ew")
+    quantidade_furos = ['4', '6', '8', '12']  #Lista de quantidades de furos em um bico
+
+    Var_furos = StringVar()
+    furos_comobox = ttk.Combobox(inp_frame, textvariable=Var_furos, font=('Arial', 18), state='readonly')
+    furos_comobox['values'] = quantidade_furos
+    furos_comobox.grid(row=3, column=1, columnspan=4, padx=10, pady=10, sticky="ew")
+    #input_furos = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
+    #input_furos.grid(row=3, column=1, columnspan=2, padx=10, pady=10, sticky="ew")
     #input_furos.place(relx=0.2, rely=0.55, relwidth=0.26, relheight=0.07)
     
     # {=======================TIPO=========================}
     label_tipo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Tipo: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_tipo.grid(row=3, column=2, padx=10, pady=10, sticky="e")
+    label_tipo.grid(row=4, column=0, padx=10, pady=10, sticky="ew")
     #label_tipo.place(relx=0.52, rely=0.55)
 
     input_tipo = tk.Entry(inp_frame,font=("Arial", 18))
-    input_tipo.grid(row=3, column=3, columnspan=2, padx=20, pady=10, sticky="ew")
+    input_tipo.grid(row=4, column=1, columnspan=4, padx=5, pady=5, sticky="ew")
     #input_tipo.place(relx=0.64, rely=0.55, relwidth=0.26, relheight=0.07)
     add_placeholder(input_tipo, "externa/interna")
     
     # {=======================BOF=========================}
     label_BOF = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "BOF: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_BOF.grid(row=4, column=0, padx=10, pady=10, sticky="e")
+    label_BOF.grid(row=5, column=0, sticky="ew")
     #label_BOF.place(relx=0.06, rely=0.70)
 
     input_BOF = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
-    input_BOF.grid(row=4, column=1, columnspan=2, padx=10, pady=10, sticky="ew")
+    input_BOF.grid(row=5, column=1, columnspan=4, sticky="ew")
     #input_BOF.place(relx=0.2, rely=0.70, relwidth=0.26, relheight=0.07)
     
     # {=======================ID=========================}
     label_ID = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "ID: ", fundo_branco, marrom, 'arial', '20', 'bold')
-    label_ID.grid(row=4, column=2, padx=10, pady=10, sticky="e")
+    label_ID.grid(row=6, column=0, sticky="ew")
     #label_ID.place(relx=0.55, rely=0.70)
 
     input_ID = tk.Entry(inp_frame, validate= "key",font=("Arial", 18), validatecommand= validador(inp_frame))
-    input_ID.grid(row=4, column=3, padx=10, pady=10, sticky="ew")
+    input_ID.grid(row=6, column=1, columnspan=4, sticky="ew")
     #input_ID.place(relx=0.64, rely=0.70, relwidth=0.26, relheight=0.07)
     
-    # {=======================Botão Voltar, Continuar e Deletar=========================}
-    bt_voltar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "VOLTAR",verde, bege,3,'18','bold',"hand2",lambda: FUNCOES_TKINTER.BOTAO_VOLTAR(inp_menu, inp_janela))
-    bt_voltar.grid(row=5, column=0, columnspan=2, padx=20, pady=10, sticky="sew")
+    # {=======================Botão Voltar, Continuar e excluir=========================}
+    bt_voltar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "VOLTAR",verde, bege,3,'18','bold',"hand2",lambda: FUNCOES_TKINTER.BOTAO_VOLTAR( inp_menu, inp_janela))
+    bt_voltar.grid(row=7, column=0, padx=20, pady=10, sticky="sew")
     #bt_voltar.place(relx=0.05, rely=0.89, relwidth=0.2, relheight=0.08)
     
     bt_deletar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "DELETAR", verde, bege,3,'18','bold',"hand2",lambda: deletar(inp_menu, inp_janela))
-    bt_deletar.grid(row=5, column=2, columnspan=3, padx=80, pady=10, sticky="sew")
+    bt_deletar.grid(row=7, column=1, padx=20, pady=10, sticky="sew")
     #bt_deletar.place(relx=0.4, rely=0.89, relwidth=0.2, relheight=0.08)
 
     bt_salvar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "SALVAR",verde, bege,3,'18','bold',"hand2",lambda: salvar(inp_menu, inp_janela))
-    bt_salvar.grid(row=5, column=6, columnspan=2, padx=20, pady=10, sticky="sew")
+    bt_salvar.grid(row=7, column=3, columnspan=3, padx=20, pady=10, sticky="sew")
     #bt_salvar.place(relx=0.75, rely=0.89, relwidth=0.2, relheight=0.08)
     
     # {======================= Mostrando avisos =========================}
     def salvar(aba_1, aba_2):
         dados_obtidos = []
         
-        dados_obtidos.append(input_furos.get())
+        #dados_obtidos.append(input_furos.get())
+        dados_obtidos.append(Var_furos.get())
         dados_obtidos.append(Var_Usina.get())
         dados_obtidos.append(Var_site.get())
         dados_obtidos.append(input_BOF.get())
@@ -285,7 +293,8 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     def deletar(aba_1, aba_2):
         dados_obtidos = []
             
-        dados_obtidos.append(input_furos.get())
+        #dados_obtidos.append(input_furos.get())
+        dados_obtidos.append(Var_furos.get())
         dados_obtidos.append(Var_Usina.get())
         dados_obtidos.append(Var_site.get())
         dados_obtidos.append(input_BOF.get())
@@ -325,12 +334,12 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
         FUNCOES_TKINTER.BOTAO_VOLTAR(aba_1, aba_2)
     
 def componentes_frame2(inp_frame):
-    
+
     frame_2.grid_rowconfigure([0, 1, 2, 3, 4, 5], weight=1)
     frame_2.grid_columnconfigure([0, 1, 2], weight=1)
     
     # {=======================Título=========================}
-    titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Bicos Registrados", fundo_branco, verde_escuro, 'arial', '35', 'bold')
+    titulo = FUNCOES_TKINTER.CRIAR_LABEL(inp_frame, "Bicos Registrados", fundo_branco, verde_escuro, 'arial', '30', 'bold')
     titulo.grid(row=0, column=1, padx=20, pady=20, sticky="nsew")
     #titulo.place(relx =0.3, rely=0.05) 
     
