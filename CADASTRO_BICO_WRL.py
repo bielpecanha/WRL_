@@ -227,15 +227,15 @@ def componentes_frame1(inp_frame,inp_janela, inp_menu):
     
     # {=======================Botão Voltar, Continuar e excluir=========================}
     bt_voltar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "VOLTAR",verde, bege,3,'18','bold',"hand2",lambda: FUNCOES_TKINTER.BOTAO_VOLTAR( inp_menu, inp_janela))
-    bt_voltar.grid(row=7, column=0, padx=20, pady=10, sticky="sew")
+    bt_voltar.grid(row=7, column=1, padx=20, pady=10, sticky="sew")
     #bt_voltar.place(relx=0.05, rely=0.89, relwidth=0.2, relheight=0.08)
     
     bt_deletar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "DELETAR", verde, bege,3,'18','bold',"hand2",lambda: deletar(inp_menu, inp_janela))
-    bt_deletar.grid(row=7, column=1, padx=20, pady=10, sticky="sew")
+    bt_deletar.grid(row=7, column=2, columnspan=2, padx=20, pady=10, sticky="sew")
     #bt_deletar.place(relx=0.4, rely=0.89, relwidth=0.2, relheight=0.08)
 
     bt_salvar = FUNCOES_TKINTER.CRIAR_BOTAO(inp_frame, "SALVAR",verde, bege,3,'18','bold',"hand2",lambda: salvar(inp_menu, inp_janela))
-    bt_salvar.grid(row=7, column=3, columnspan=3, padx=20, pady=10, sticky="sew")
+    bt_salvar.grid(row=7, column=4, padx=20, pady=10, sticky="sew")
     #bt_salvar.place(relx=0.75, rely=0.89, relwidth=0.2, relheight=0.08)
     
     # {======================= Mostrando avisos =========================}
